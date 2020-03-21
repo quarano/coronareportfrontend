@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { SnackbarService } from './../../services/snackbar.service';
+import { Subscription } from 'rxjs';
+import { ApiService } from './../../services/api.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { DiaryEntry } from 'src/app/models/diary-entry';
 import { ActivatedRoute } from '@angular/router';
@@ -11,11 +14,13 @@ import { MatSelectChange } from '@angular/material/select';
   templateUrl: './diary-entry.component.html',
   styleUrls: ['./diary-entry.component.scss']
 })
-export class DiaryEntryComponent implements OnInit {
+export class DiaryEntryComponent implements OnInit, OnDestroy {
   formGroup: FormGroup;
   diaryEntry: DiaryEntry;
   nonCharacteristicSymptoms: Symptom[] = [];
   characteristicSymptoms: Symptom[] = [];
+  today = new Date();
+  apiSubscription: Subscription;
 
   get isNew(): boolean {
     return this.diaryEntry?.id == null;
@@ -23,7 +28,13 @@ export class DiaryEntryComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private apiService: ApiService,
+    private snackbarService: SnackbarService) { }
+
+  ngOnDestroy(): void {
+    this.apiSubscription.unsubscribe();
+  }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
@@ -55,7 +66,26 @@ export class DiaryEntryComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.formGroup.valid) {
+      Object.assign(this.diaryEntry, this.formGroup.value);
+      if (this.isNew) {
+        this.createEntry();
+      } else {
+        this.modifyEntry();
+      }
+    }
+  }
 
+  createEntry() {
+    this.apiSubscription = this.apiService
+      .createDiaryEntry(this.diaryEntry)
+      .subscribe(_ => this.snackbarService.success('Tagebuch-Eintrag erfolgreich angelegt'));
+  }
+
+  modifyEntry() {
+    this.apiSubscription = this.apiService
+      .modifyDiaryEntry(this.diaryEntry)
+      .subscribe(_ => this.snackbarService.success('Tagebuch-Eintrag erfolgreich aktualisiert'));
   }
 
   onSlideToggleChanged(event: MatSlideToggleChange, symptomId: string) {
@@ -69,5 +99,6 @@ export class DiaryEntryComponent implements OnInit {
     }
 
     control.setValue(values);
+    this.formGroup.markAsDirty();
   }
 }

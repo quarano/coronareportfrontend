@@ -21,4 +21,11 @@ export class ApiService {
     return this.httpClient.get<DiaryEntry>(`${this.baseUrl}/diaryentries/${id}`);
   }
 
+  createDiaryEntry(diaryEntry: DiaryEntry): Observable<DiaryEntry> {
+    return this.httpClient.post<DiaryEntry>(`${this.baseUrl}/diaryentries`, diaryEntry);
+  }
+
+  modifyDiaryEntry(diaryEntry: DiaryEntry) {
+    return this.httpClient.put(`${this.baseUrl}/diaryentries/${diaryEntry.id}`, diaryEntry);
+  }
 }

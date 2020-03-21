@@ -11,16 +11,20 @@
       <mat-form-field>
         <input
           matInput
-          [matDatepicker]="datepicker"
+          [ngxMatDatetimePicker]="picker"
+          placeholder="Datum des Eintrags"
           formControlName="date"
           required
-          placeholder="Datum des Eintrags"
+          [max]="today"
         />
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="datepicker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #datepicker></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker
+          #picker
+          [showSpinners]="true"
+          [showSeconds]="false"
+          [stepMinute]="5"
+        >
+        </ngx-mat-datetime-picker>
       </mat-form-field>
       <mat-form-field>
         <input
@@ -60,7 +64,12 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button type="submit" mat-raised-button color="primary">
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="formGroup.invalid || formGroup.pristine"
+      >
         Speichern
       </button>
       <button type="button" mat-raised-button color="secondary">
