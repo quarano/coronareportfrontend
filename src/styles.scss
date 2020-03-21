@@ -1,8 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
-body, html{
-  height: 100%
+body,
+html {
+  height: 100%;
+  background-color: #fafafa;
 }
+
 body {
   margin: 0;
 }
@@ -15,7 +18,7 @@ body {
 
 .form__card--animated {
   animation-name: fade-card;
-  animation-duration: .25s;
+  animation-duration: 0.25s;
 }
 
 .form__input--full-width {
@@ -23,7 +26,12 @@ body {
 }
 
 @keyframes fade-card {
-  from {opacity: 0; left: 40%}
-  to {opacity: 1; left: 0}
+  from {
+    opacity: 0;
+    left: 40%;
+  }
+  to {
+    opacity: 1;
+    left: 0;
+  }
 }
-
