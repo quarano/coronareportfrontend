@@ -41,11 +41,8 @@ const materialModules = [
   exports: [...materialModules],
   declarations: [],
   providers: [
-
     { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
     { provide: MAT_DATE_LOCALE, useValue: 'de' },
-
-    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }
   ]
 })
 export class AngularMaterialModule { }
