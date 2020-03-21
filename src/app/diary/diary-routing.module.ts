@@ -1,3 +1,5 @@
+import { SymptomsResolver } from './../resolvers/symptoms.resolver';
+import { DiaryEntryResolver } from './../resolvers/diary-entry.resolver';
 import { DiaryComponent } from './diary.component';
 import { DiaryEntryComponent } from './diary-entry/diary-entry.component';
 import { NgModule } from '@angular/core';
@@ -10,8 +12,14 @@ const routes: Routes = [
     component: DiaryComponent
   },
   {
-    path: 'edit',
-    component: DiaryEntryComponent
+    path: 'edit/:id',
+    component: DiaryEntryComponent,
+    resolve: { diaryEntry: DiaryEntryResolver, symptoms: SymptomsResolver }
+  },
+  {
+    path: 'new',
+    component: DiaryEntryComponent,
+    resolve: { diaryEntry: DiaryEntryResolver, symptoms: SymptomsResolver }
   }
 ];
 
