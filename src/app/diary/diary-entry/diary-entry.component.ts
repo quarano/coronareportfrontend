@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { DiaryEntry } from 'src/app/models/diary-entry';
 
 @Component({
   selector: 'app-diary-entry',
@@ -6,10 +8,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./diary-entry.component.css']
 })
 export class DiaryEntryComponent implements OnInit {
+  formGroup: FormGroup;
+  diaryEntry: DiaryEntry;
 
-  constructor() { }
-
-  ngOnInit() {
+  get isNew(): boolean {
+    return this.diaryEntry?.id == null;
   }
 
+  constructor(private formBuilder: FormBuilder) { }
+
+  ngOnInit() {
+    this.buildForm();
+  }
+
+  buildForm() {
+    this.formGroup = this.formBuilder.group(
+      {
+        bodyTemperature: new FormControl(this.diaryEntry.bodyTemperature, Validators.required),
+      }
+    );
+  }
+
+  onSubmit() {
+
+  }
 }
