@@ -61,11 +61,12 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
 
   buildForm() {
     const characteristicSymptomIds = this.diaryEntry.characteristicSymptoms.map(s => s.id);
+    const nonCharacteristicSymptomIds = this.diaryEntry.nonCharacteristicSymptoms.map(s => s.id);
     this.formGroup = this.formBuilder.group(
       {
         bodyTemperature: new FormControl({ value: this.diaryEntry.bodyTemperature, disabled: this.isReadonly }, Validators.required),
         characteristicSymptoms: new FormControl({ value: characteristicSymptomIds, disabled: this.isReadonly }),
-        nonCharacteristicSymptoms: new FormControl({ value: this.diaryEntry.nonCharacteristicSymptoms, disabled: this.isReadonly }),
+        nonCharacteristicSymptoms: new FormControl({ value: nonCharacteristicSymptomIds, disabled: this.isReadonly }),
         dateTime: new FormControl({ value: this.diaryEntry.dateTime, disabled: this.isReadonly }, Validators.required)
       }
     );
