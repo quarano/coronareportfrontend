@@ -1,4 +1,4 @@
-<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+<form>
   <mat-card class="card form__card--animated">
 
     <mat-card-header>
@@ -10,6 +10,26 @@
     </mat-card-header>
 
 
+<mat-grid-list cols="1" rowHeight="80px">
+  <mat-grid-tile
+      *ngFor="let tile of tiles"
+      [colspan]="tile.cols"
+      [rowspan]="tile.rows"
+      [style.background]="tile.color">
+      <!--{{tile.text}}-->
+    <mat-form-field class="example-full-width">
+      <mat-label>Vorname</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Nachname</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+  </mat-grid-tile>
+</mat-grid-list>
+
     <mat-card-content>
 
 
@@ -20,6 +40,8 @@
   </mat-form-field>
   /-->
 
+
+<!--
   <table class="example-full-width" cellspacing="5"><tr>
     <td><mat-form-field class="example-full-width">
       <mat-label>Vorname</mat-label>
@@ -30,19 +52,22 @@
       <input matInput>
     </mat-form-field></td>
   </tr></table>
+/-->
+
 
   <p>
     <mat-form-field class="example-full-width">
-      <mat-label>Adresse</mat-label>
-      <textarea matInput placeholder="Ex. 100 Main St"></textarea>
+      <mat-label>Straße</mat-label>
+      <input matInput placeholder="Ex. 100 Main St">
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <mat-label>Address 2</mat-label>
-      <textarea matInput></textarea>
+      <mat-label>Hausnummer</mat-label>
+      <input matInput>
     </mat-form-field>
   </p>
 
-<!--
+<!-- Emailadresse abfragen und ggf. validieren
+
   <mat-form-field class="example-full-width">
     <mat-label>Email</mat-label>
     <input matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
@@ -54,29 +79,38 @@
     </mat-error>
   </mat-form-field>
 -->
+<p>
+    <mat-form-field class="example-full-width">
+      <mat-label>E-Mail</mat-label>
+      <input matInput placeholder="max@mustermann.de">
+    </mat-form-field>
 
-  <table class="example-full-width" cellspacing="10"><tr>
-
-
-    <td><mat-form-field class="example-full-width">
-      <mat-label>PLZ</mat-label>
-      <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="">
-      <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-    </mat-form-field></td>
+  </p>
 
 
-    <td><mat-form-field class="example-full-width">
-      <mat-label>Stadt</mat-label>
-      <input matInput placeholder="Ex. San Francisco">
-    </mat-form-field></td>
-  </tr></table>
+        <table class="example-full-width" cellspacing="10"><tr>
+
+
+          <td><mat-form-field class="example-full-width">
+            <mat-label>PLZ</mat-label>
+            <input matInput #postalCode maxlength="5" placeholder="Beispiel: 68305" value="">
+            <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+          </mat-form-field></td>
+
+
+          <td><mat-form-field class="example-full-width">
+            <mat-label>Stadt</mat-label>
+            <input matInput placeholder="Beispiel: Mannheim">
+          </mat-form-field></td>
+        </tr></table>
+
       </mat-card-content>
       <mat-card-actions>
       <button
         type="submit"
         mat-raised-button
         color="primary"
-        [disabled]="formGroup.invalid || formGroup.pristine"
+
       >
         Speichern
       </button>
