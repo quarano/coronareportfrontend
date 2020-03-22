@@ -1,5 +1,9 @@
-<mat-toolbar color="primary">
-  <img style="max-height: 95%;" src="../assets/epitrack_transparent_logo.png" />
+<mat-toolbar color="primary" id="header">
+  <img
+    id="logo"
+    src="../assets/epitrack_transparent_logo.png"
+    [routerLink]="['/']"
+  />
   <h6 style="margin-left: 1rem;">epitrack</h6>
   <nav *ngIf="isAuthenticated$$ | async">
     <a routerLink="/diary" routerLinkActive="active">Tagebuch</a>
@@ -13,4 +17,17 @@
 <div style="height: 4px" *ngIf="!(progressBarActive$$ | async)"></div>
 <div class="content">
   <router-outlet></router-outlet>
+</div>
+<mat-toolbar color="accent" id="footer"
+  ><a href="https://trendtwitter.com/WirvsVirusHack/" target="_blank" id="link"
+    ><h6 style="color: #f4f4f4;">#wirvsvirushack</h6></a
+  ></mat-toolbar
+>
+<div id="footer-wrapper">
+  <a href="https://wirvsvirushackathon.org/" target="_blank"
+    ><img src="./../assets/Logo_Projekt_01_weiss.png"
+  /></a>
+  <a href="https://opensource.org/" target="_blank"
+    ><img src="./../assets/open_source.png" style="margin-left: 1rem;"
+  /></a>
 </div>
