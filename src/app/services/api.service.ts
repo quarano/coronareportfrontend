@@ -1,13 +1,14 @@
-import {environment} from './../../environments/environment';
-import {SymptomDto} from './../models/symptom';
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {BackendClient} from '../models/backend-client';
-import {share, map} from 'rxjs/operators';
-import {DiaryEntryDto, DiaryEntryModifyDto} from '../models/diary-entry';
-import {groupBy} from '../utils/groupBy';
-import {FirstQuery} from '../models/first-query';
+import { environment } from './../../environments/environment';
+import { SymptomDto } from './../models/symptom';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { BackendClient } from '../models/backend-client';
+import { share, map } from 'rxjs/operators';
+import { DiaryEntryDto, DiaryEntryModifyDto } from '../models/diary-entry';
+import { groupBy } from '../utils/groupBy';
+import { FirstQuery } from '../models/first-query';
+import { ContactPersonDto } from '../models/contact-person';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,10 @@ export class ApiService {
 
   getSymptoms(): Observable<SymptomDto[]> {
     return this.httpClient.get<SymptomDto[]>(`${this.baseUrl}/symptoms`).pipe(share());
+  }
+
+  getContactPersons(): Observable<ContactPersonDto[]> {
+    return this.httpClient.get<ContactPersonDto[]>(`${this.baseUrl}/contactpersons`).pipe(share());
   }
 
   getDiaryEntry(id: string): Observable<DiaryEntryDto> {
@@ -54,7 +59,7 @@ export class ApiService {
   }
 
   registerClient(client: BackendClient): Observable<string> {
-    return this.httpClient.post(`${this.baseUrl}/client/register`, client, {responseType: 'text'});
+    return this.httpClient.post(`${this.baseUrl}/client/register`, client, { responseType: 'text' });
   }
 
   getClientByCode(code: string): Observable<BackendClient> {
