@@ -1,28 +1,95 @@
-<mat-card class="form__card--small form__card--animated" *ngIf="(existingCode$$ | async) === null">
-    <h2>Willkommen</h2>
-  <mat-card-content>
-    <p>Anscheinend haben Sie die App auf diesem Gerät noch nicht genutzt. Haben Sie bereits einen Identifikations-Code?</p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button mat-raised-button color="primary" (click)="setExistingCodeState(true)">Ja, ich habe einen Code
-    </button>
-    <button mat-button mat-raised-button color="primary" (click)="setExistingCodeState(false)">Nein, ich habe noch keinen
-      Code
-    </button>
-  </mat-card-actions>
+<mat-card
+  class="form__card--small form__card--animated"
+  style="margin-bottom: 1rem; text-align: center; color:red"
+>
+  <i class="material-icons">warning</i>
+  <span style="margin-left: 1rem;">
+    Im Falle eines medizinischen Notfalls wählen Sie bitte umgehend den Notruf
+  </span>
 </mat-card>
 
-<mat-card class="form__card--small form__card--animated" *ngIf="(existingCode$$ | async) === true">
-    <h2>Code vorhanden</h2>
+<mat-card
+  class="form__card--small form__card--animated"
+  *ngIf="(existingCode$$ | async) === null"
+>
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title>Willkommen</mat-card-title>
+    <mat-card-subtitle
+      >auf der Epidemieverwaltungsplattform Ihres
+      Gesundheitsamts</mat-card-subtitle
+    >
+  </mat-card-header>
   <mat-card-content>
-    <p>Bitte geben Sie Ihren Code ein, den Sie beim erstmaligen Verwenden erhalten haben:</p>
+    <p style="margin-bottom: 3rem;">
+      Anscheinend haben Sie die App auf diesem Gerät noch nicht genutzt.
+    </p>
+    <p>Sie haben von uns Zugangsdaten erhalten und sind bereits registriert?</p>
+    <p>
+      <button
+        style="margin-bottom: 3rem;"
+        mat-button
+        mat-raised-button
+        color="primary"
+        (click)="setExistingCodeState(true)"
+      >
+        Ja, ich habe einen Code
+      </button>
+    </p>
+    <p>
+      Sie wollen das Angebot des digitalen Gesundheits-Tagebuchs nutzen, haben
+      aber noch keine Zugangsdaten?
+    </p>
+    <p style="margin-bottom: 3rem;">
+      <button
+        mat-button
+        mat-raised-button
+        color="primary"
+        (click)="setExistingCodeState(false)"
+      >
+        Jetzt neu registrieren
+      </button>
+
+      <br />
+      <small style="color: lightgrey;"
+        >Mit der Registrierung stimmen Sie unseren
+        <a href="#" style="text-decoration: none; color: lightgrey;">AGB</a>
+        sowie der Verarbeitung Ihrer Daten zu</small
+      >
+    </p>
+    <p>Sie brauchen Unterstützung?</p>
+    <a mat-stroked-button href="https://tools.rki.de/PLZTool/" target="_blank"
+      >Kontaktieren Sie uns</a
+    >
+  </mat-card-content>
+  <mat-card-actions> </mat-card-actions>
+</mat-card>
+
+<mat-card
+  class="form__card--small form__card--animated"
+  *ngIf="(existingCode$$ | async) === true"
+>
+  <h2>Code vorhanden</h2>
+  <mat-card-content>
+    <p>
+      Bitte geben Sie Ihren Code ein, den Sie beim erstmaligen Verwenden
+      erhalten haben:
+    </p>
     <mat-form-field class="form__input--full-width" appearance="outline">
       <mat-label>Ihr Code</mat-label>
-      <input matInput [(ngModel)]="enteredCode">
+      <input matInput [(ngModel)]="enteredCode" />
     </mat-form-field>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button mat-raised-button (click)="reset()">Zurück</button>
-    <button mat-button mat-raised-button color="primary" (click)="authenticateCode()" [disabled]="checkingCode">Code laden</button>
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="authenticateCode()"
+      [disabled]="checkingCode"
+    >
+      Code laden
+    </button>
   </mat-card-actions>
 </mat-card>
