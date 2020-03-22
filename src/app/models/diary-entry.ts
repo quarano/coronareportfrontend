@@ -15,3 +15,8 @@ export interface DiaryEntryModifyDto {
   symptoms: string[];
   date: Date;
 }
+
+export interface GroupedDiaryEntryDto {
+  date: Date;
+  entries: DiaryEntryDto[];
+}

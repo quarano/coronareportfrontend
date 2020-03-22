@@ -1,3 +1,4 @@
+import { SubSink } from 'subsink';
 import { DiaryEntryModifyDto } from './../../models/diary-entry';
 import { SnackbarService } from './../../services/snackbar.service';
 import { Subscription } from 'rxjs';
@@ -20,7 +21,7 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
   nonCharacteristicSymptoms: SymptomDto[] = [];
   characteristicSymptoms: SymptomDto[] = [];
   today = new Date();
-  apiSubscription: Subscription;
+  private subs = new SubSink();
 
   get isNew(): boolean {
     return this.diaryEntry?.id == null;
@@ -33,14 +34,14 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
     private snackbarService: SnackbarService) { }
 
   ngOnDestroy(): void {
-    this.apiSubscription.unsubscribe();
+    this.subs.unsubscribe();
   }
 
   ngOnInit() {
-    this.route.data.subscribe(data => {
+    this.subs.add(this.route.data.subscribe(data => {
       this.diaryEntry = data.diaryEntry;
       this.setSymptoms(data.symptoms);
-    });
+    }));
     this.buildForm();
   }
 
@@ -86,15 +87,15 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
   }
 
   createEntry(diaryEntry: DiaryEntryModifyDto) {
-    this.apiSubscription = this.apiService
+    this.subs.add(this.apiService
       .createDiaryEntry(diaryEntry)
-      .subscribe(_ => this.snackbarService.success('Tagebuch-Eintrag erfolgreich angelegt'));
+      .subscribe(_ => this.snackbarService.success('Tagebuch-Eintrag erfolgreich angelegt')));
   }
 
   modifyEntry(diaryEntry: DiaryEntryModifyDto) {
-    this.apiSubscription = this.apiService
+    this.subs.add(this.apiService
       .modifyDiaryEntry(diaryEntry)
-      .subscribe(_ => this.snackbarService.success('Tagebuch-Eintrag erfolgreich aktualisiert'));
+      .subscribe(_ => this.snackbarService.success('Tagebuch-Eintrag erfolgreich aktualisiert')));
   }
 
   onSlideToggleChanged(event: MatSlideToggleChange, symptomId: string) {

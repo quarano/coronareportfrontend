@@ -14,7 +14,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from 'ngx-mat-datetime-picker';
 import { NgxMatMomentModule } from 'ngx-mat-moment-adapter';
 
@@ -33,7 +34,8 @@ const materialModules = [
   NgxMatTimepickerModule,
   NgxMatMomentModule,
   MatSnackBarModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatExpansionModule
 ];
 
 @NgModule({

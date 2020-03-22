@@ -1,3 +1,4 @@
+import { GroupedDiaryEntriesResolver } from '../resolvers/grouped-diary-entries.resolver';
 import { AngularMaterialModule } from './../angular-material/angular-material.module';
 import { SymptomsResolver } from './../resolvers/symptoms.resolver';
 import { DiaryEntryResolver } from './../resolvers/diary-entry.resolver';
@@ -16,6 +17,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   declarations: [DiaryComponent, DiaryEntryComponent],
-  providers: [DiaryEntryResolver, SymptomsResolver]
+  providers: [DiaryEntryResolver, SymptomsResolver, GroupedDiaryEntriesResolver]
 })
 export class DiaryModule { }
