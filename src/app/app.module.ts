@@ -14,6 +14,7 @@ import { DiaryModule } from './diary/diary.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
+import { ContactModule } from './contact/contact.module';
 
 registerLocaleData(localeDe, 'de');
 
@@ -31,7 +32,8 @@ registerLocaleData(localeDe, 'de');
     AngularMaterialModule,
     FormsModule,
     HttpClientModule,
-    DiaryModule
+    DiaryModule,
+    ContactModule
   ],
   providers: [
     SnackbarService
