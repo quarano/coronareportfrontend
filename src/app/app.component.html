@@ -1,7 +1,11 @@
-<mat-toolbar  color="primary">
-  <span>Corona Report</span>
+<mat-toolbar color="primary">
+  <img style="max-height: 95%;" src="../assets/epitrack_transparent_logo.png" />
+  <h6 style="margin-left: 1rem;">epitrack</h6>
 </mat-toolbar>
-<mat-progress-bar mode="query" *ngIf="progressBarActive$$ | async"></mat-progress-bar>
+<mat-progress-bar
+  mode="query"
+  *ngIf="progressBarActive$$ | async"
+></mat-progress-bar>
 <div style="height: 4px" *ngIf="!(progressBarActive$$ | async)"></div>
 <div class="content">
   <router-outlet></router-outlet>

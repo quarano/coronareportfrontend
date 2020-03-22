@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   api: {
-    baseUrl: 'https://backend-xb7jbbunsq-ew.a.run.app'
+    baseUrl: 'http://localhost:3000'
   }
 };
 
