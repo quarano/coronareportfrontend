@@ -32,3 +32,7 @@ To start the server run `json-server --watch db.json`
 
 runs at `http://localhost:3000`
 further information at [github](https://github.com/typicode/json-server)
+
+## CSS framework
+
+We use [Angular Material](https://v7.material.angular.io)
