@@ -5,10 +5,10 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 
 @Injectable()
-export class GroupedDiaryEntriesResolver implements Resolve<[string, DiaryEntryDto[]]> {
+export class GroupedDiaryEntriesResolver implements Resolve<Map<string, DiaryEntryDto[]>> {
   constructor(private apiService: ApiService) { }
 
-  resolve(route: ActivatedRouteSnapshot): Observable<[string, DiaryEntryDto[]]> {
+  resolve(route: ActivatedRouteSnapshot): Observable<Map<string, DiaryEntryDto[]>> {
     return this.apiService.getGroupedDiaryEntries();
   }
 }

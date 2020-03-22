@@ -6,7 +6,7 @@ import { ApiService } from './../../services/api.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { DiaryEntryDto } from 'src/app/models/diary-entry';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SymptomDto } from 'src/app/models/symptom';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
@@ -31,7 +31,8 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private apiService: ApiService,
-    private snackbarService: SnackbarService) { }
+    private snackbarService: SnackbarService,
+    private router: Router) { }
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();
@@ -47,7 +48,7 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
 
   setSymptoms(symptoms: SymptomDto[]) {
     symptoms.forEach(symptom => {
-      if (symptom.isCharacteristic) {
+      if (symptom.characteristic) {
         this.characteristicSymptoms.push(symptom);
       } else {
         this.nonCharacteristicSymptoms.push(symptom);
@@ -62,7 +63,7 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
         bodyTemperature: new FormControl(this.diaryEntry.bodyTemperature, Validators.required),
         characteristicSymptoms: new FormControl(characteristicSymptomIds),
         nonCharacteristicSymptoms: new FormControl(this.diaryEntry.nonCharacteristicSymptoms),
-        date: new FormControl(this.diaryEntry.date, Validators.required)
+        dateTime: new FormControl(this.diaryEntry.dateTime, Validators.required)
       }
     );
   }
@@ -70,11 +71,11 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
   onSubmit() {
     if (this.formGroup.valid) {
       const diaryEntryModifyDto: DiaryEntryModifyDto
-        = { id: null, bodyTemperature: null, symptoms: [], date: null };
+        = { id: null, bodyTemperature: null, symptoms: [], dateTime: null };
       diaryEntryModifyDto.symptoms = this.characteristicSymptomsControl.value;
       diaryEntryModifyDto.id = this.diaryEntry.id;
       diaryEntryModifyDto.bodyTemperature = this.formGroup.controls.bodyTemperature.value;
-      diaryEntryModifyDto.date = this.formGroup.controls.date.value;
+      diaryEntryModifyDto.dateTime = this.formGroup.controls.dateTime.value;
       diaryEntryModifyDto.symptoms.push(...this.formGroup.controls.nonCharacteristicSymptoms.value);
       console.log(diaryEntryModifyDto);
 
@@ -89,13 +90,19 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
   createEntry(diaryEntry: DiaryEntryModifyDto) {
     this.subs.add(this.apiService
       .createDiaryEntry(diaryEntry)
-      .subscribe(_ => this.snackbarService.success('Tagebuch-Eintrag erfolgreich angelegt')));
+      .subscribe(_ => {
+        this.snackbarService.success('Tagebuch-Eintrag erfolgreich angelegt');
+        this.router.navigate(['/diary']);
+      }));
   }
 
   modifyEntry(diaryEntry: DiaryEntryModifyDto) {
     this.subs.add(this.apiService
       .modifyDiaryEntry(diaryEntry)
-      .subscribe(_ => this.snackbarService.success('Tagebuch-Eintrag erfolgreich aktualisiert')));
+      .subscribe(_ => {
+        this.snackbarService.success('Tagebuch-Eintrag erfolgreich aktualisiert');
+        this.router.navigate(['/diary']);
+      }));
   }
 
   onSlideToggleChanged(event: MatSlideToggleChange, symptomId: string) {

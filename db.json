@@ -23,7 +23,7 @@
     },
     {
       "name": "Halsschmerzen",
-      "isCharacteristic": true,
+      "characteristic": true,
       "id": "Halsschmerzen"
     },
     {
@@ -223,7 +223,7 @@
     },
     {
       "name": "Fieber",
-      "isCharacteristic": true,
+      "characteristic": true,
       "id": "Fieber"
     },
     {
@@ -309,7 +309,7 @@
     },
     {
       "name": "Husten",
-      "isCharacteristic": true
+      "characteristic": true
     },
     {
       "name": "Hypercortisolismus"
@@ -367,7 +367,7 @@
     },
     {
       "name": "Kurzatmigkeit",
-      "isCharacteristic": true,
+      "characteristic": true,
       "id": "Kurzatmigkeit"
     },
     {
@@ -651,7 +651,16 @@
     {
       "id": "id2",
       "bodyTemperature": 36,
-      "symptoms": [],
+      "symptoms": [
+        {
+          "name": "Anämie",
+          "id": "Anämie"
+        },
+        {
+          "name": "Angst",
+          "id": "Angst"
+        }
+      ],
       "date": "2020-03-21T22:10:36.942Z"
     },
     {

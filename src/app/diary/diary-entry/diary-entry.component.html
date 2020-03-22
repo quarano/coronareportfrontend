@@ -13,7 +13,7 @@
           matInput
           [ngxMatDatetimePicker]="picker"
           placeholder="Datum des Eintrags"
-          formControlName="date"
+          formControlName="dateTime"
           required
           [max]="today"
         />
@@ -74,7 +74,12 @@
       >
         Speichern
       </button>
-      <button type="button" mat-raised-button color="secondary">
+      <button
+        type="button"
+        mat-raised-button
+        color="secondary"
+        [routerLink]="['/diary']"
+      >
         Abbrechen
       </button>
     </mat-card-actions>

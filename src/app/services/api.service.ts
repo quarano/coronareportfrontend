@@ -2,9 +2,10 @@ import { environment } from './../../environments/environment';
 import { SymptomDto } from './../models/symptom';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, zip, of } from 'rxjs';
-import { share, map, groupBy, mergeMap, toArray, concatAll, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { share, map, } from 'rxjs/operators';
 import { DiaryEntryDto, DiaryEntryModifyDto } from '../models/diary-entry';
+import { groupBy } from '../utils/groupBy';
 
 @Injectable({
   providedIn: 'root'
@@ -22,20 +23,18 @@ export class ApiService {
     return this.httpClient.get<DiaryEntryDto>(`${this.baseUrl}/diaryentries/${id}`)
       .pipe(
         map(entry => {
-          entry.characteristicSymptoms = entry.symptoms.filter(s => s.isCharacteristic);
-          entry.nonCharacteristicSymptoms = entry.symptoms.filter(s => !s.isCharacteristic);
+          entry.characteristicSymptoms = entry.symptoms.filter(s => s.characteristic);
+          entry.nonCharacteristicSymptoms = entry.symptoms.filter(s => !s.characteristic);
           return entry;
         }),
         share()
       );
   }
 
-  getGroupedDiaryEntries(): Observable<[string, DiaryEntryDto[]]> {
+  getGroupedDiaryEntries(): Observable<Map<string, DiaryEntryDto[]>> {
     return this.getDiaryEntries()
       .pipe(
-        concatAll(),
-        groupBy(entry => new Date(entry.date).toLocaleDateString()),
-        mergeMap(group => zip(of(group.key), group.pipe(toArray()))),
+        map(entries => groupBy<DiaryEntryDto>(entries, e => new Date(e.dateTime).toLocaleDateString()))
       );
   }
 

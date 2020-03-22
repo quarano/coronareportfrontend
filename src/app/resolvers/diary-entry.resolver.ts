@@ -21,8 +21,9 @@ export class DiaryEntryResolver implements Resolve<DiaryEntryDto> {
           characteristicSymptoms: [],
           nonCharacteristicSymptoms: [],
           bodyTemperature: null,
-          date: new Date(),
-          symptoms: []
+          dateTime: new Date(),
+          symptoms: [],
+          transmittedToHealthDepartment: false
         });
     }
   }

@@ -6,17 +6,13 @@ export interface DiaryEntryDto {
   symptoms: SymptomDto[];
   characteristicSymptoms: SymptomDto[];
   nonCharacteristicSymptoms: SymptomDto[];
-  date: Date;
+  dateTime: Date;
+  transmittedToHealthDepartment: boolean;
 }
 
 export interface DiaryEntryModifyDto {
   bodyTemperature: number;
   id: string;
   symptoms: string[];
-  date: Date;
-}
-
-export interface GroupedDiaryEntryDto {
-  date: Date;
-  entries: DiaryEntryDto[];
+  dateTime: Date;
 }
