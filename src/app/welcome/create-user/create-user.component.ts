@@ -8,6 +8,7 @@ import {BackendClient} from '../../models/backend-client';
 import {SnackbarService} from '../../services/snackbar.service';
 import {ProgressBarService} from '../../services/progress-bar.service';
 import {switchMap} from 'rxjs/operators';
+import {ApiService} from '../../services/api.service';
 
 @Component({
   selector: 'app-create-user',
@@ -26,6 +27,7 @@ export class CreateUserComponent implements OnInit {
 
   constructor(private userService: UserService,
               private snackbarService: SnackbarService,
+              private apiService: ApiService,
               private progressBarService: ProgressBarService) {
   }
 
@@ -36,16 +38,21 @@ export class CreateUserComponent implements OnInit {
   }
 
   public registerClient() {
+    let clientCode: string;
     this.progressBarService.progressBarState = true;
     this.registerStarted = true;
     this.userService.createClient(this.client$$.getValue(), this.firstQuery$$.getValue())
       .pipe(
-        switchMap(code => this.userService.setUserCode(code))
+        switchMap((code: string) => {
+          clientCode = code;
+          return this.userService.setUserCode(code);
+        }),
+        switchMap((backendClient: BackendClient) => this.apiService.createFirstReport(this.firstQuery$$.getValue(), clientCode))
       )
       .subscribe(
-        (backendClient: BackendClient) => {
+        () => {
           this.progressBarService.progressBarState = false;
-          this.clientCode = backendClient.clientCode;
+          this.clientCode = clientCode;
           this.snackbarService.confirm('Die Registrierung war erfolgreich.');
         },
         error => {

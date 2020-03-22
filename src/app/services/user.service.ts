@@ -24,12 +24,16 @@ export class UserService {
     return this.latestFirstQuery$$.getValue();
   }
 
-  private get localClientCode(): string | null {
+  public get localClientCode(): string | null {
     return localStorage.getItem(USERCODE_STORAGE_KEY);
   }
 
-  private set localClientCode(code) {
-    localStorage.setItem(USERCODE_STORAGE_KEY, code);
+  public set localClientCode(code) {
+    if (code === null) {
+      localStorage.removeItem(USERCODE_STORAGE_KEY);
+    } else {
+      localStorage.setItem(USERCODE_STORAGE_KEY, code);
+    }
   }
 
   constructor(private apiService: ApiService,

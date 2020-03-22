@@ -1,12 +1,13 @@
-import { environment } from './../../environments/environment';
-import { SymptomDto } from './../models/symptom';
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {environment} from './../../environments/environment';
+import {SymptomDto} from './../models/symptom';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 import {BackendClient} from '../models/backend-client';
-import { share, map, } from 'rxjs/operators';
-import { DiaryEntryDto, DiaryEntryModifyDto } from '../models/diary-entry';
-import { groupBy } from '../utils/groupBy';
+import {share, map} from 'rxjs/operators';
+import {DiaryEntryDto, DiaryEntryModifyDto} from '../models/diary-entry';
+import {groupBy} from '../utils/groupBy';
+import {FirstQuery} from '../models/first-query';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ import { groupBy } from '../utils/groupBy';
 export class ApiService {
   private baseUrl = environment.api.baseUrl;
 
-  constructor(protected httpClient: HttpClient) { }
+  constructor(protected httpClient: HttpClient) {
+  }
 
   getSymptoms(): Observable<SymptomDto[]> {
     return this.httpClient.get<SymptomDto[]>(`${this.baseUrl}/symptoms`).pipe(share());
@@ -57,5 +59,9 @@ export class ApiService {
 
   getClientByCode(code: string): Observable<BackendClient> {
     return this.httpClient.get<BackendClient>(`${this.baseUrl}/client/${code}`);
+  }
+
+  createFirstReport(firstReport: FirstQuery, clientCode: string): Observable<any> {
+    return this.httpClient.post(`${this.baseUrl}/firstReport/${clientCode}`, firstReport);
   }
 }

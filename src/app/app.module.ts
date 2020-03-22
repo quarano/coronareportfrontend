@@ -9,13 +9,14 @@ import {WelcomeComponent} from './welcome/welcome.component';
 import {AppRoutingModule} from './app-routing.module';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {DiaryModule} from './diary/diary.module';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {registerLocaleData} from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import {WelcomeModule} from './welcome/welcome.module';
 import { ContactModule } from './contact/contact.module';
+import {AuthInterceptor} from './interceptors/auth-interceptor';
 
 
 registerLocaleData(localeDe, 'de');
@@ -37,7 +38,8 @@ registerLocaleData(localeDe, 'de');
     ContactModule
   ],
   providers: [
-    SnackbarService
+    SnackbarService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [
     AppComponent
