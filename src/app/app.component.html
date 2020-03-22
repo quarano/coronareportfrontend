@@ -1,6 +1,10 @@
 <mat-toolbar color="primary">
   <img style="max-height: 95%;" src="../assets/epitrack_transparent_logo.png" />
   <h6 style="margin-left: 1rem;">epitrack</h6>
+  <nav *ngIf="isAuthenticated$$ | async">
+    <a routerLink="/diary" routerLinkActive="active">Tagebuch</a>
+    <a routerLink="/contacts" routerLinkActive="active">Kontakte</a>
+  </nav>
 </mat-toolbar>
 <mat-progress-bar
   mode="query"

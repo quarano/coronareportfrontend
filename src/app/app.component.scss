@@ -5,3 +5,38 @@
 .mat-toolbar.mat-primary {
   background-image: linear-gradient(to right, #5ce1e6, #120816) !important;
 }
+
+$break-small: 480px;
+
+nav {
+  margin-left: 40px;
+
+  @media (max-width: $break-small) {
+    margin-left: 15px;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+
+    @media (max-width: $break-small) {
+      padding: 10px 7px;
+    }
+
+    &:hover {
+      background-color: rgba(255,255,255,.2);
+    }
+    & ~ a {
+      margin-left: 20px;
+
+      @media (max-width: $break-small) {
+        margin-left: 5px;
+      }
+    }
+    &.active{
+      background-color: rgba(255,255,255,.2);
+    }
+  }
+}
