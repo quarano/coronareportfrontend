@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "coronareportfrontend"
+  "defaultProject": "coronareportfrontend",
+  "cli": {
+    "analytics": "4b024b36-b97a-4c80-869c-947d72551044"
+  }
 }

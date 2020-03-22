@@ -1,5 +1,5 @@
 import { ApiService } from './services/api.service';
-import { Symptom } from './models/symptom';
+import { SymptomDto } from './models/symptom';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import {ProgressBarService} from './services/progress-bar.service';
@@ -26,7 +26,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.progressBarActive$$.subscribe(val => console.log('Progressbar state: ' + val));
     /*this.apiService.getSymptoms()
       .subscribe(symtpoms => this.symptoms = symtpoms);*/
   }

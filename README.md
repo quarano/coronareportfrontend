@@ -1,5 +1,6 @@
 # Coronareportfrontend
 
+Deployt at <https://frontend-xb7jbbunsq-ew.a.run.app>
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 
 ## Development server

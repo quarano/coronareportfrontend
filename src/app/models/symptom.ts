@@ -1,5 +1,5 @@
-export interface Symptom {
+export interface SymptomDto {
   id: string;
   name: string;
-  isCharacteristic: boolean;
+  characteristic: boolean;
 }

@@ -14,7 +14,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatBadgeModule } from '@angular/material/badge';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from 'ngx-mat-datetime-picker';
 import { NgxMatMomentModule } from 'ngx-mat-moment-adapter';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
@@ -35,7 +39,11 @@ const materialModules = [
   NgxMatMomentModule,
   MatSnackBarModule,
   MatToolbarModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatExpansionModule,
+  MatTableModule,
+  MatBadgeModule,
+  MatIconModule
 ];
 
 @NgModule({

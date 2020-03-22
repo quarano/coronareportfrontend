@@ -15,6 +15,8 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {registerLocaleData} from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import {WelcomeModule} from './welcome/welcome.module';
+import { ContactModule } from './contact/contact.module';
+
 
 registerLocaleData(localeDe, 'de');
 
@@ -31,7 +33,8 @@ registerLocaleData(localeDe, 'de');
     FormsModule,
     HttpClientModule,
     DiaryModule,
-    WelcomeModule
+    WelcomeModule,
+    ContactModule
   ],
   providers: [
     SnackbarService

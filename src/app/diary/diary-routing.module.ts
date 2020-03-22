@@ -1,3 +1,4 @@
+import { GroupedDiaryEntriesResolver } from '../resolvers/grouped-diary-entries.resolver';
 import { SymptomsResolver } from './../resolvers/symptoms.resolver';
 import { DiaryEntryResolver } from './../resolvers/diary-entry.resolver';
 import { DiaryComponent } from './diary.component';
@@ -9,7 +10,8 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    component: DiaryComponent
+    component: DiaryComponent,
+    resolve: { diaryEntries: GroupedDiaryEntriesResolver }
   },
   {
     path: 'edit/:id',
