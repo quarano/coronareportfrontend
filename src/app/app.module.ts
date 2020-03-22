@@ -14,24 +14,24 @@ import { DiaryModule } from './diary/diary.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
+import {WelcomeModule} from './welcome/welcome.module';
 
 registerLocaleData(localeDe, 'de');
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent,
     NotFoundComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    ClipboardModule,
     AngularMaterialModule,
     FormsModule,
     HttpClientModule,
-    DiaryModule
+    DiaryModule,
+    WelcomeModule
   ],
   providers: [
     SnackbarService

@@ -1,25 +1,41 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {UserService} from '../services/user.service';
+import {Router} from '@angular/router';
+import {BehaviorSubject} from 'rxjs';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss']
 })
-export class WelcomeComponent {
+export class WelcomeComponent implements OnInit{
 
   public identCode = 'A47-9GE-BB1';
   public enteredCode = '';
-  public existingCode: boolean | null = null;
+  public existingCode$$ = new BehaviorSubject<boolean>(null);
 
-  constructor() {
+  constructor(private userService: UserService,
+              private router: Router) {
   }
 
-  public setExistingCode(state: boolean) {
-    this.existingCode = state;
+  ngOnInit(): void {
+    this.existingCode$$.asObservable().pipe(
+      filter(value => value === false)
+    ).subscribe(() => this.router.navigate(['/welcome/create-user']));
+  }
+
+  public setExistingCodeState(state: boolean) {
+    this.existingCode$$.next(state);
   }
 
   public reset() {
-    this.existingCode = null;
+    this.existingCode$$.next(null);
+  }
+
+  public authenticateCode() {
+    this.userService.setUserCode(this.enteredCode);
+    this.enteredCode = null;
   }
 
 }

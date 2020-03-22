@@ -1,38 +1,28 @@
-<mat-card class="form__card--small form__card--animated" *ngIf="existingCode === null">
-  <h2>Willkommen</h2>
-  <p>Hast du diese App bereits benutzt und besitzt einen Code?</p>
+<mat-card class="form__card--small form__card--animated" *ngIf="(existingCode$$ | async) === null">
+    <h2>Willkommen</h2>
+  <mat-card-content>
+    <p>Anscheinend haben Sie die App auf diesem Gerät noch nicht genutzt. Haben Sie bereits einen Identifikations-Code?</p>
+  </mat-card-content>
   <mat-card-actions>
-    <button mat-button mat-raised-button color="primary" (click)="setExistingCode(true)">Ja, ich habe einen Code
+    <button mat-button mat-raised-button color="primary" (click)="setExistingCodeState(true)">Ja, ich habe einen Code
     </button>
-    <button mat-button mat-raised-button color="primary" (click)="setExistingCode(false)">Nein, ich habe noch keinen
+    <button mat-button mat-raised-button color="primary" (click)="setExistingCodeState(false)">Nein, ich habe noch keinen
       Code
     </button>
   </mat-card-actions>
 </mat-card>
 
-<mat-card class="form__card--small form__card--animated" *ngIf="existingCode === false">
-  <h2>Dein Neuer Code</h2>
-  <p>Mit folgendem Code erhältst du Zugriff auf deine Daten. Bitte bewahre ihn sicher auf:</p>
-  <mat-form-field class="form__input--full-width" appearance="outline">
-    <mat-label>Dein Code</mat-label>
-    <input matInput readonly [(ngModel)]="identCode">
-  </mat-form-field>
+<mat-card class="form__card--small form__card--animated" *ngIf="(existingCode$$ | async) === true">
+    <h2>Code vorhanden</h2>
+  <mat-card-content>
+    <p>Bitte geben Sie Ihren Code ein, den Sie beim erstmaligen Verwenden erhalten haben:</p>
+    <mat-form-field class="form__input--full-width" appearance="outline">
+      <mat-label>Ihr Code</mat-label>
+      <input matInput [(ngModel)]="enteredCode">
+    </mat-form-field>
+  </mat-card-content>
   <mat-card-actions>
     <button mat-button mat-raised-button (click)="reset()">Zurück</button>
-    <button mat-button mat-raised-button color="primary" [cdkCopyToClipboard]="identCode">In die Zwischenablage</button>
-  </mat-card-actions>
-</mat-card>
-
-
-<mat-card class="form__card--small form__card--animated" *ngIf="existingCode === true">
-  <h2>Dein Code</h2>
-  <p>Bitte gebe deinen Code ein, den du erhalten hast, um deine Daten aufzurufen:</p>
-  <mat-form-field class="form__input--full-width" appearance="outline">
-    <mat-label>Dein Code</mat-label>
-    <input matInput [(ngModel)]="enteredCode">
-  </mat-form-field>
-  <mat-card-actions>
-    <button mat-button mat-raised-button (click)="reset()">Zurück</button>
-    <button mat-button mat-raised-button color="primary">Code Laden</button>
+    <button mat-button mat-raised-button color="primary" (click)="authenticateCode()">Code Laden</button>
   </mat-card-actions>
 </mat-card>
