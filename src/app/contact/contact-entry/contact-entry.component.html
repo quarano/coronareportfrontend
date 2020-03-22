@@ -54,6 +54,27 @@
   </tr></table>
 /-->
 
+<mat-grid-list cols="1" rowHeight="80px">
+  <mat-grid-tile
+      *ngFor="let tile of tiles"
+      [colspan]="tile.cols"
+      [rowspan]="tile.rows"
+      [style.background]="tile.color">
+      <!--{{tile.text}}-->
+    <mat-form-field class="example-full-width">
+      <mat-label>Straße</mat-label>
+      <input matInput placeholder="Ex. 100 Main St">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Hausnummer</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+  </mat-grid-tile>
+</mat-grid-list>
+
+<!-- alte straße - kann gelöscht werden
 
   <p>
     <mat-form-field class="example-full-width">
@@ -65,6 +86,8 @@
       <input matInput>
     </mat-form-field>
   </p>
+  -->
+
 
 <!-- Emailadresse abfragen und ggf. validieren
 
