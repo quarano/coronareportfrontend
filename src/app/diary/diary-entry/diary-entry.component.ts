@@ -61,11 +61,12 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
 
   buildForm() {
     const characteristicSymptomIds = this.diaryEntry.characteristicSymptoms.map(s => s.id);
+    const nonCharacteristicSymptomIds = this.diaryEntry.nonCharacteristicSymptoms.map(s => s.id);
     this.formGroup = this.formBuilder.group(
       {
         bodyTemperature: new FormControl({ value: this.diaryEntry.bodyTemperature, disabled: this.isReadonly }, Validators.required),
         characteristicSymptoms: new FormControl({ value: characteristicSymptomIds, disabled: this.isReadonly }),
-        nonCharacteristicSymptoms: new FormControl(this.diaryEntry.nonCharacteristicSymptoms),
+        nonCharacteristicSymptoms: new FormControl({ value: nonCharacteristicSymptomIds, disabled: this.isReadonly }),
         dateTime: new FormControl({ value: this.diaryEntry.dateTime, disabled: this.isReadonly }, Validators.required)
       }
     );
@@ -127,7 +128,7 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
   }
 
   isCharacteristicSymptomSelected(symptom: SymptomDto) {
-    const selectedValues = this.characteristicSymptomsControl.value as string[];
+    const selectedValues = this.characteristicSymptomsControl.value as number[];
     return selectedValues.includes(symptom.id);
   }
 }

@@ -1,5 +1,5 @@
 export interface SymptomDto {
-  id: string;
+  id: number;
   name: string;
   characteristic: boolean;
 }
