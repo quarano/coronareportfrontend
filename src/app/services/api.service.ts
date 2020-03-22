@@ -27,7 +27,11 @@ export class ApiService {
     return this.httpClient.get<ContactPersonDto[]>(`${this.baseUrl}/contactpersons`).pipe(share());
   }
 
-  getDiaryEntry(id: string): Observable<DiaryEntryDto> {
+  getContactPerson(id: number): Observable<ContactPersonDto> {
+    return this.httpClient.get<ContactPersonDto>(`${this.baseUrl}/contactpersons/${id}`).pipe(share());
+  }
+
+  getDiaryEntry(id: number): Observable<DiaryEntryDto> {
     return this.httpClient.get<DiaryEntryDto>(`${this.baseUrl}/diaryentries/${id}`)
       .pipe(
         map(entry => {

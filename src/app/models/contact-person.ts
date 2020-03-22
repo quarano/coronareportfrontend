@@ -4,6 +4,5 @@ export interface ContactPersonDto {
   surename: string;
   phone: string;
   zipCode: string;
-  city: string;
   email: string;
 }

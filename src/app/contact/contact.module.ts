@@ -1,3 +1,4 @@
+import { ContactPersonResolver } from './../resolvers/contact-person.resolver';
 import { ContactEntryComponent } from './contact-entry/contact-entry.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -29,6 +30,6 @@ import { ContactPersonsResolver } from '../resolvers/contact-persons.resolver';
     ScrollingModule
   ],
   declarations: [ContactComponent, ContactEntryComponent],
-  providers: [ContactPersonsResolver]
+  providers: [ContactPersonsResolver, ContactPersonResolver]
 })
 export class ContactModule { }

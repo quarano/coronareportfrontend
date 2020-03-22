@@ -31,6 +31,12 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 }
 
 @font-face {
+  font-family: GlacialIndifferenceBold;
+  src: url("./assets/glacial-indifference/GlacialIndifference-Bold.otf")
+    format("opentype");
+}
+
+@font-face {
   font-family: OpenSans;
   src: url("./assets/open-sans/OpenSans-Regular.ttf") format("opentype");
 }
@@ -47,6 +53,15 @@ body {
 
 * {
   font-family: GlacialIndifference, OpenSans;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: GlacialIndifferenceBold !important;
 }
 
 .form__card--small {

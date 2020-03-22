@@ -11,11 +11,11 @@ const routes: Routes = [
   },
   {
     path: 'diary', loadChildren: () =>
-      import('./diary/diary.module').then(m => m.DiaryModule), canLoad: [IsNotAuthenticatedGuard]
+      import('./diary/diary.module').then(m => m.DiaryModule), canLoad: [IsAuthenticatedGuard]
   },
   {
     path: 'contacts', loadChildren: () =>
-      import('./contact/contact.module').then(m => m.ContactModule), canLoad: [IsNotAuthenticatedGuard]
+      import('./contact/contact.module').then(m => m.ContactModule), canLoad: [IsAuthenticatedGuard]
   },
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }
