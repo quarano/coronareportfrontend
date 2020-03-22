@@ -729,7 +729,15 @@
       "phone": "0177-3057246",
       "zipCode": "12345",
       "City": "Pusemuckel",
-      "email": "agathe@bauer.de"
+      "email": "frank@enstein.de"
+    },
+    {
+      "id": 4,
+      "firstname": "Helene",
+      "surename": "Fischer",
+      "zipCode": null,
+      "email": null,
+      "phone": "12465"
     }
   ]
 }

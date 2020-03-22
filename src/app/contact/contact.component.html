@@ -10,12 +10,11 @@
         <mat-card-title
           >{{ contact.firstname }} {{ contact.surename }}</mat-card-title
         >
-        <mat-card-subtitle>{{ contact.email }}</mat-card-subtitle>
+        <mat-card-subtitle>{{
+          contact.email || "(ohne E-Mail)"
+        }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <p>
-          <i class="material-icons" size="small">room</i> {{ contact.zipCode }}
-        </p>
         <p>
           <i class="material-icons" size="small">phone</i> {{ contact.phone }}
         </p>
