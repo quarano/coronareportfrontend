@@ -65,7 +65,7 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
       {
         bodyTemperature: new FormControl({ value: this.diaryEntry.bodyTemperature, disabled: this.isReadonly }, Validators.required),
         characteristicSymptoms: new FormControl({ value: characteristicSymptomIds, disabled: this.isReadonly }),
-        nonCharacteristicSymptoms: new FormControl({ value: this.diaryEntry.nonCharacteristicSymptoms, disabled: this.isReadonly }),
+        nonCharacteristicSymptoms: new FormControl(this.diaryEntry.nonCharacteristicSymptoms),
         dateTime: new FormControl({ value: this.diaryEntry.dateTime, disabled: this.isReadonly }, Validators.required)
       }
     );

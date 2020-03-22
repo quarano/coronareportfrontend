@@ -1,4 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/theming";
+
+// always include only once per project
+@include mat-core();
+
+// import our custom theme
+@import "./assets/app-theme.scss";
+
+/// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$app-primary: mat-palette($mat-primary);
+$app-accent: mat-palette($mat-accent, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$app-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($app-theme);
 
 body,
 html {
@@ -47,4 +71,29 @@ body {
 
 .background-orange {
   background-color: orange !important;
+}
+
+.dark-primary-color {
+  background: #0097a7;
+}
+.default-primary-color {
+  background: #00bcd4;
+}
+.light-primary-color {
+  background: #b2ebf2;
+}
+.text-primary-color {
+  color: #ffffff;
+}
+.accent-color {
+  background: #ffc107;
+}
+.primary-text-color {
+  color: #212121;
+}
+.secondary-text-color {
+  color: #757575;
+}
+.divider-color {
+  border-color: #bdbdbd;
 }
