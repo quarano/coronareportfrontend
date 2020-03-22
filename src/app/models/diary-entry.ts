@@ -2,7 +2,7 @@ import { SymptomDto } from './symptom';
 
 export interface DiaryEntryDto {
   bodyTemperature: number;
-  id: string;
+  id: number;
   symptoms: SymptomDto[];
   characteristicSymptoms: SymptomDto[];
   nonCharacteristicSymptoms: SymptomDto[];
@@ -12,7 +12,7 @@ export interface DiaryEntryDto {
 
 export interface DiaryEntryModifyDto {
   bodyTemperature: number;
-  id: string;
+  id: number;
   symptoms: string[];
   dateTime: Date;
 }
