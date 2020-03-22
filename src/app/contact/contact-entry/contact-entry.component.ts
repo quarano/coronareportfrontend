@@ -25,14 +25,12 @@ import { MatSelectChange } from '@angular/material/select';
 export class ContactEntryComponent implements OnInit {
   formGroup: FormGroup;
 
-<<<<<<< HEAD
+
   tiles: Tile[] = [
     {text: '', cols: 1, rows: 1, color: 'white'},
 
   ];
 
-=======
->>>>>>> f5316e77e77e20bd52d4c2e391e494a16c4de46d
 
   constructor() { }
 
