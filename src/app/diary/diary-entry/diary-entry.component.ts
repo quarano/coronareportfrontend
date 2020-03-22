@@ -127,7 +127,7 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
   }
 
   isCharacteristicSymptomSelected(symptom: SymptomDto) {
-    const selectedValues = this.characteristicSymptomsControl.value as string[];
+    const selectedValues = this.characteristicSymptomsControl.value as number[];
     return selectedValues.includes(symptom.id);
   }
 }

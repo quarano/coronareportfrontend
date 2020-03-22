@@ -2,11 +2,11 @@
   "symptoms": [
     {
       "name": "Anämie",
-      "id": "Anämie"
+      "id": 1
     },
     {
       "name": "Angst",
-      "id": "Angst"
+      "id": 2
     },
     {
       "name": "Blähungen"
@@ -19,12 +19,12 @@
     },
     {
       "name": "Durchfall",
-      "id": "Durchfall"
+      "id": 6
     },
     {
       "name": "Halsschmerzen",
       "characteristic": true,
-      "id": "Halsschmerzen"
+      "id": 5
     },
     {
       "name": "Hautausschlag"
@@ -224,7 +224,7 @@
     {
       "name": "Fieber",
       "characteristic": true,
-      "id": "Fieber"
+      "id": 4
     },
     {
       "name": "Fingernägel-Kauen"
@@ -368,7 +368,7 @@
     {
       "name": "Kurzatmigkeit",
       "characteristic": true,
-      "id": "Kurzatmigkeit"
+      "id": 3
     },
     {
       "name": "Leistenschmerzen"
@@ -643,30 +643,37 @@
   ],
   "diaryEntries": [
     {
-      "id": "id1",
+      "id": 1,
       "bodyTemperature": 38.6,
       "symptoms": [],
       "dateTime": "2020-03-20T02:24:00.000Z",
       "transmittedToHealthDepartment": true
     },
     {
-      "id": "id2",
+      "id": 2,
       "bodyTemperature": 36,
       "symptoms": [
         {
           "name": "Anämie",
-          "id": "Anämie"
+          "id": 1,
+          "characteristic": false
         },
         {
           "name": "Angst",
-          "id": "Angst"
+          "id": 2,
+          "characteristic": false
+        },
+        {
+          "name": "Halsschmerzen",
+          "characteristic": true,
+          "id": 5
         }
       ],
       "dateTime": "2020-03-21T22:10:36.942Z",
       "transmittedToHealthDepartment": true
     },
     {
-      "id": "Od2aDEU",
+      "id": 3,
       "bodyTemperature": 35,
       "symptoms": [],
       "dateTime": "2020-03-22T06:56:07.275Z",
