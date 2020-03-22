@@ -16,6 +16,8 @@ export class UserService {
   private readonly client$$ = new BehaviorSubject<Client>(null);
   private readonly latestFirstQuery$$ = new BehaviorSubject<FirstQuery>(null);
 
+  public isAuthenticated$$ = new BehaviorSubject<boolean>(false);
+
   public get user(): Client | null {
     return this.client$$.getValue();
   }
@@ -48,7 +50,9 @@ export class UserService {
   }
 
   public isFullyAuthenticated(): boolean {
-    return this.localClientCode !== null && this.user !== null;
+    const authenticated = this.localClientCode !== null && this.user !== null;
+    this.isAuthenticated$$.next(authenticated);
+    return authenticated;
   }
 
   private checkCodeGetClient(code: string, withErrorNavigation = true): Observable<BackendClient> {

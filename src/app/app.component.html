@@ -5,6 +5,10 @@
     [routerLink]="['/']"
   />
   <h6 style="margin-left: 1rem;">epitrack</h6>
+  <nav *ngIf="isAuthenticated$$ | async">
+    <a routerLink="/diary" routerLinkActive="active">Tagebuch</a>
+    <a routerLink="/contacts" routerLinkActive="active">Kontakte</a>
+  </nav>
 </mat-toolbar>
 <mat-progress-bar
   mode="query"

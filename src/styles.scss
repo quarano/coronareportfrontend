@@ -26,20 +26,22 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 @font-face {
   font-family: GlacialIndifference;
-  src: url("./assets/glacial-indifference/GlacialIndifference-Regular.otf")
-    format("opentype");
+  src: url("./assets/glacial-indifference/GlacialIndifference-Regular.otf") format("opentype");
 }
 
 @font-face {
   font-family: GlacialIndifferenceBold;
-  src: url("./assets/glacial-indifference/GlacialIndifference-Bold.otf")
-    format("opentype");
+  src: url("./assets/glacial-indifference/GlacialIndifference-Bold.otf") format("opentype");
 }
 
 @font-face {
   font-family: OpenSans;
   src: url("./assets/open-sans/OpenSans-Regular.ttf") format("opentype");
 }
+
+// Make it responsive
+$break-small: 480px;
+$break-large: 120px;
 
 body,
 html {
@@ -68,6 +70,34 @@ h6 {
   width: 30%;
   margin-left: auto;
   margin-right: auto;
+
+  .mat-button {
+    margin-right: 15px !important;
+    & ~ .mat-button {
+      margin-top: 20px !important;
+      margin-left: 0;
+      margin-right: 15px;
+    }
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  @media (max-width: $break-small) {
+    width: 90%;
+    .mat-step-label {
+      display: none;
+    }
+    .mat-card-actions {
+      .mat-button {
+        width: 100% !important;
+        margin: 5px 0;
+      }
+      .mat-button ~ .mat-button {
+        margin-top: 20px !important;
+      }
+    }
+  }
 }
 
 .form__card--animated {
@@ -92,6 +122,7 @@ h6 {
 .radio-button__group--vertical {
   display: flex;
   flex-direction: column;
+
   .mat-radio-button ~ .mat-radio-button {
     margin-top: 16px;
   }
@@ -112,6 +143,7 @@ h6 {
   background-color: rgb(153, 50, 50) !important;
   color: beige;
 }
+
 .background-green {
   background-color: rgb(29, 102, 29) !important;
   color: beige;
@@ -124,24 +156,31 @@ h6 {
 .dark-primary-color {
   background: #0097a7;
 }
+
 .default-primary-color {
   background: #00bcd4;
 }
+
 .light-primary-color {
   background: #b2ebf2;
 }
+
 .text-primary-color {
   color: #ffffff;
 }
+
 .accent-color {
   background: #ffc107;
 }
+
 .primary-text-color {
   color: #212121;
 }
+
 .secondary-text-color {
   color: #757575;
 }
+
 .divider-color {
   border-color: #bdbdbd;
 }
