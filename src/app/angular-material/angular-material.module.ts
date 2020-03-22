@@ -17,6 +17,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from 'ngx-mat-datetime-picker';
 import { NgxMatMomentModule } from 'ngx-mat-moment-adapter';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 const materialModules = [
   MatButtonModule,
@@ -33,7 +34,8 @@ const materialModules = [
   NgxMatTimepickerModule,
   NgxMatMomentModule,
   MatSnackBarModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatProgressBarModule
 ];
 
 @NgModule({

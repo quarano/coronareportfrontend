@@ -2,7 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from '../services/user.service';
 import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
-import {filter} from 'rxjs/operators';
+import {delay, filter, tap} from 'rxjs/operators';
+import {Client} from '../models/client';
+import {SnackbarService} from '../services/snackbar.service';
+import {ProgressBarService} from '../services/progress-bar.service';
 
 @Component({
   selector: 'app-welcome',
@@ -14,9 +17,12 @@ export class WelcomeComponent implements OnInit{
   public identCode = 'A47-9GE-BB1';
   public enteredCode = '';
   public existingCode$$ = new BehaviorSubject<boolean>(null);
+  public checkingCode = false;
 
   constructor(private userService: UserService,
-              private router: Router) {
+              private router: Router,
+              private snackbarService: SnackbarService,
+              private progressBarService: ProgressBarService) {
   }
 
   ngOnInit(): void {
@@ -34,8 +40,23 @@ export class WelcomeComponent implements OnInit{
   }
 
   public authenticateCode() {
-    this.userService.setUserCode(this.enteredCode);
-    this.enteredCode = null;
+    this.checkingCode = true;
+    this.progressBarService.progressBarState = true;
+    this.userService.setUserCode(this.enteredCode)
+      .subscribe(
+        (client: Client) => {
+          this.checkingCode = false;
+          this.progressBarService.progressBarState = false;
+          this.snackbarService.confirm('Der Code wurde erfolgreich geladen.');
+          this.router.navigate(['/diary']);
+        },
+        error => {
+          this.checkingCode = false;
+          this.progressBarService.progressBarState = false;
+          this.snackbarService.error('Der Code ist nicht vergeben.');
+          this.router.navigate(['/welcome/create-user']);
+        }
+      );
   }
 
 }

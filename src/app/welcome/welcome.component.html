@@ -23,6 +23,6 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-button mat-raised-button (click)="reset()">Zurück</button>
-    <button mat-button mat-raised-button color="primary" (click)="authenticateCode()">Code Laden</button>
+    <button mat-button mat-raised-button color="primary" (click)="authenticateCode()" [disabled]="checkingCode">Code laden</button>
   </mat-card-actions>
 </mat-card>

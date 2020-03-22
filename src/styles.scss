@@ -25,6 +25,23 @@ body {
   width: 100%;
 }
 
+.w-100 {
+  width: 100%;
+}
+
+.radio-button__group--horizontal {
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+}
+
+.radio-button__group--vertical {
+  display: flex; flex-direction: column;
+  .mat-radio-button ~ .mat-radio-button {
+    margin-top: 16px;
+  }
+}
+
 @keyframes fade-card {
   from {
     opacity: 0;
