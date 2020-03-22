@@ -1,3 +1,4 @@
+import { ContactPersonDto } from 'src/app/models/contact-person';
 import { element } from 'protractor';
 import { DiaryEntryDto } from 'src/app/models/diary-entry';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -13,7 +14,7 @@ export class DiaryComponent implements OnInit, OnDestroy {
   diaryEntries: Map<string, DiaryEntryDto[]> = new Map<string, DiaryEntryDto[]>();
   private subs = new SubSink();
   today = new Date().toLocaleDateString();
-  displayedColumns = ['dateTime', 'bodyTemperature', 'symptoms', 'transmittedToHealthDepartment'];
+  displayedColumns = ['dateTime', 'bodyTemperature', 'symptoms', 'contactPersonList', 'transmittedToHealthDepartment'];
 
   constructor(private route: ActivatedRoute) { }
 
@@ -27,7 +28,11 @@ export class DiaryComponent implements OnInit, OnDestroy {
     this.subs.unsubscribe();
   }
 
-  toString(entry: DiaryEntryDto): string {
+  toStringSymptoms(entry: DiaryEntryDto): string {
     return entry.symptoms.map(s => s.name).join(', ');
+  }
+
+  toStringContactPersons(entry: DiaryEntryDto): string {
+    return entry.contactPersonList.map(s => `${s.firstname} ${s.surename}`).join(', ');
   }
 }

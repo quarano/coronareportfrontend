@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { ContactPersonResolver } from './../resolvers/contact-person.resolver';
 import { ContactPersonComponent } from './contact-person/contact-person.component';
 import { NgModule } from '@angular/core';
@@ -13,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ContactRoutingModule,
     AngularMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   declarations: [ContactComponent, ContactPersonComponent],
   providers: [ContactPersonsResolver, ContactPersonResolver]

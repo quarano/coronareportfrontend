@@ -23,7 +23,8 @@ export class DiaryEntryResolver implements Resolve<DiaryEntryDto> {
           bodyTemperature: null,
           dateTime: new Date(),
           symptoms: [],
-          transmittedToHealthDepartment: false
+          transmittedToHealthDepartment: false,
+          contactPersonList: []
         });
     }
   }
