@@ -32,9 +32,6 @@ export class CreateUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.firstQuery$$.subscribe(
-      val => console.log('new fq: ' + JSON.stringify(val))
-    );
   }
 
   public registerClient() {

@@ -37,6 +37,6 @@
     <button [cdkCopyToClipboard]="clientCode" mat-button>Code in die Zwischenablage kopieren</button>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button mat-raised-button color="primary">Weiter</button>
+    <button mat-button mat-raised-button color="primary" *ngIf="clientCode">Weiter</button>
   </mat-card-actions>
 </mat-card>

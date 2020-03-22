@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
 import {BackendClient} from '../models/backend-client';
 import {FirstQuery} from '../models/first-query';
 
-const USERCODE_STORAGE_KEY = 'covu';
+export const USERCODE_STORAGE_KEY = 'covu';
 
 @Injectable({
   providedIn: 'root'
@@ -25,14 +25,14 @@ export class UserService {
   }
 
   public get localClientCode(): string | null {
-    return localStorage.getItem(USERCODE_STORAGE_KEY);
+    return localStorage[USERCODE_STORAGE_KEY];
   }
 
   public set localClientCode(code) {
     if (code === null) {
       localStorage.removeItem(USERCODE_STORAGE_KEY);
     } else {
-      localStorage.setItem(USERCODE_STORAGE_KEY, code);
+      localStorage[USERCODE_STORAGE_KEY] = code;
     }
   }
 
