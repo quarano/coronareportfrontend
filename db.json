@@ -23,7 +23,7 @@
     },
     {
       "name": "Halsschmerzen",
-      "isCharacteristic": true,
+      "characteristic": true,
       "id": "Halsschmerzen"
     },
     {
@@ -223,7 +223,7 @@
     },
     {
       "name": "Fieber",
-      "isCharacteristic": true,
+      "characteristic": true,
       "id": "Fieber"
     },
     {
@@ -281,9 +281,6 @@
       "name": "Halluzinationen"
     },
     {
-      "name": "Halsschmerzen"
-    },
-    {
       "name": "Hämoptoe (Bluthusten)"
     },
     {
@@ -312,7 +309,7 @@
     },
     {
       "name": "Husten",
-      "isCharacteristic": true
+      "characteristic": true
     },
     {
       "name": "Hypercortisolismus"
@@ -370,7 +367,8 @@
     },
     {
       "name": "Kurzatmigkeit",
-      "isCharacteristic": true
+      "characteristic": true,
+      "id": "Kurzatmigkeit"
     },
     {
       "name": "Leistenschmerzen"
@@ -646,24 +644,33 @@
   "diaryEntries": [
     {
       "id": "id1",
-      "bodyTemperature": "38,6",
-      "characteristicSymptoms": [
-        "Halsschmerzen",
-        "Halsschmerzen"
-      ],
-      "nonCharacteristicSymptoms": [],
-      "date": "2020-03-20T02:24:00.000Z"
+      "bodyTemperature": 38.6,
+      "symptoms": [],
+      "dateTime": "2020-03-20T02:24:00.000Z",
+      "transmittedToHealthDepartment": true
     },
     {
-      "id": "cQnbDDN",
-      "characteristicSymptoms": [
-        "Halsschmerzen"
-      ],
-      "nonCharacteristicSymptoms": [
-        "Durchfall"
-      ],
+      "id": "id2",
       "bodyTemperature": 36,
-      "date": "2020-03-21T22:10:36.942Z"
+      "symptoms": [
+        {
+          "name": "Anämie",
+          "id": "Anämie"
+        },
+        {
+          "name": "Angst",
+          "id": "Angst"
+        }
+      ],
+      "dateTime": "2020-03-21T22:10:36.942Z",
+      "transmittedToHealthDepartment": true
+    },
+    {
+      "id": "Od2aDEU",
+      "bodyTemperature": 35,
+      "symptoms": [],
+      "dateTime": "2020-03-22T06:56:07.275Z",
+      "transmittedToHealthDepartment": false
     }
   ]
 }
