@@ -3,8 +3,6 @@ import { SymptomDto } from './../models/symptom';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { DiaryEntry } from '../models/diary-entry';
-import {Client} from '../models/client';
 import {BackendClient} from '../models/backend-client';
 import { share, map, } from 'rxjs/operators';
 import { DiaryEntryDto, DiaryEntryModifyDto } from '../models/diary-entry';
