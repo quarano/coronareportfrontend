@@ -9,6 +9,7 @@ import {SnackbarService} from '../../services/snackbar.service';
 import {ProgressBarService} from '../../services/progress-bar.service';
 import {switchMap} from 'rxjs/operators';
 import {ApiService} from '../../services/api.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-user',
@@ -28,6 +29,7 @@ export class CreateUserComponent implements OnInit {
   constructor(private userService: UserService,
               private snackbarService: SnackbarService,
               private apiService: ApiService,
+              private router: Router,
               private progressBarService: ProgressBarService) {
   }
 
@@ -57,6 +59,10 @@ export class CreateUserComponent implements OnInit {
           this.snackbarService.error('Es ist ein Fehler aufgetreten. Bitte später erneut versuchen.');
         }
       );
+  }
+
+  public navigateToDiary() {
+    this.router.navigate(['/diary']);
   }
 
 }
