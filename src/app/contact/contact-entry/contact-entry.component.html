@@ -63,12 +63,12 @@
       <!--{{tile.text}}-->
     <mat-form-field class="example-full-width">
       <mat-label>Straße</mat-label>
-      <input matInput placeholder="Ex. 100 Main St">
+      <input matInput placeholder="Beispiel: Hauptstraße">
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label>Hausnummer</mat-label>
-      <input matInput>
+      <input matInput placeholder="Beispiel: 404">
     </mat-form-field>
 
   </mat-grid-tile>
@@ -129,8 +129,26 @@
 
           </p>
 
+        <p>
+
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1">Direkter Kontakt</mat-radio-button>
+                <mat-radio-button value="2">Indirekter Kontakt</mat-radio-button>
+              </mat-radio-group>
+
+         </p>
+
+
       </mat-card-content>
       <mat-card-actions>
+              <p>
+
+
+
+
+      <mat-checkbox>Akzeptiere AGB</mat-checkbox>
+          </p>
+
       <button
         type="submit"
         mat-raised-button
