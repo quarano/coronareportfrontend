@@ -21,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from 'ngx-mat-datetime-picker';
 import { NgxMatMomentModule } from 'ngx-mat-moment-adapter';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 const materialModules = [
   MatButtonModule,
@@ -38,6 +39,7 @@ const materialModules = [
   NgxMatMomentModule,
   MatSnackBarModule,
   MatToolbarModule,
+  MatProgressBarModule,
   MatExpansionModule,
   MatTableModule,
   MatBadgeModule,
