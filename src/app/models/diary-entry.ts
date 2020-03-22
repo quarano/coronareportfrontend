@@ -1,8 +1,17 @@
-import { Symptom } from './symptom';
-export interface DiaryEntry {
+import { SymptomDto } from './symptom';
+
+export interface DiaryEntryDto {
   bodyTemperature: number;
   id: string;
-  characteristicSymptoms: Symptom[];
-  nonCharacteristicSymptoms: Symptom[];
+  symptoms: SymptomDto[];
+  characteristicSymptoms: SymptomDto[];
+  nonCharacteristicSymptoms: SymptomDto[];
+  date: Date;
+}
+
+export interface DiaryEntryModifyDto {
+  bodyTemperature: number;
+  id: string;
+  symptoms: string[];
   date: Date;
 }

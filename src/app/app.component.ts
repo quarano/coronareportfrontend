@@ -1,5 +1,5 @@
 import { ApiService } from './services/api.service';
-import { Symptom } from './models/symptom';
+import { SymptomDto } from './models/symptom';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'coronareportfrontend';
-  symptoms: Symptom[] = [];
+  symptoms: SymptomDto[] = [];
   private apiSubscription: Subscription;
 
   constructor(private apiService: ApiService) {

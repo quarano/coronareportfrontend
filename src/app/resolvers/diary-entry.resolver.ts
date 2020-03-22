@@ -2,14 +2,14 @@ import { ApiService } from './../services/api.service';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, ParamMap } from '@angular/router';
-import { DiaryEntry } from '../models/diary-entry';
+import { DiaryEntryDto } from '../models/diary-entry';
 import { pipe } from 'rxjs';
 
 @Injectable()
-export class DiaryEntryResolver implements Resolve<DiaryEntry> {
+export class DiaryEntryResolver implements Resolve<DiaryEntryDto> {
   constructor(private apiService: ApiService) { }
 
-  resolve(route: ActivatedRouteSnapshot): Observable<DiaryEntry> {
+  resolve(route: ActivatedRouteSnapshot): Observable<DiaryEntryDto> {
     const id = route.paramMap.get('id');
 
     if (id) {
@@ -21,7 +21,8 @@ export class DiaryEntryResolver implements Resolve<DiaryEntry> {
           characteristicSymptoms: [],
           nonCharacteristicSymptoms: [],
           bodyTemperature: null,
-          date: new Date()
+          date: new Date(),
+          symptoms: []
         });
     }
   }

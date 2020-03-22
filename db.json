@@ -281,9 +281,6 @@
       "name": "Halluzinationen"
     },
     {
-      "name": "Halsschmerzen"
-    },
-    {
       "name": "Hämoptoe (Bluthusten)"
     },
     {
@@ -370,7 +367,8 @@
     },
     {
       "name": "Kurzatmigkeit",
-      "isCharacteristic": true
+      "isCharacteristic": true,
+      "id": "Kurzatmigkeit"
     },
     {
       "name": "Leistenschmerzen"
@@ -646,24 +644,21 @@
   "diaryEntries": [
     {
       "id": "id1",
-      "bodyTemperature": "38,6",
-      "characteristicSymptoms": [
-        "Halsschmerzen",
-        "Halsschmerzen"
-      ],
-      "nonCharacteristicSymptoms": [],
+      "bodyTemperature": 38.6,
+      "symptoms": [],
       "date": "2020-03-20T02:24:00.000Z"
     },
     {
-      "id": "cQnbDDN",
-      "characteristicSymptoms": [
-        "Halsschmerzen"
-      ],
-      "nonCharacteristicSymptoms": [
-        "Durchfall"
-      ],
+      "id": "id2",
       "bodyTemperature": 36,
+      "symptoms": [],
       "date": "2020-03-21T22:10:36.942Z"
+    },
+    {
+      "id": "Od2aDEU",
+      "bodyTemperature": 35,
+      "symptoms": [],
+      "date": "2020-03-22T06:56:07.275Z"
     }
   ]
 }
