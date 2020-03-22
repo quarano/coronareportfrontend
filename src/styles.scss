@@ -24,6 +24,17 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 // that you are using.
 @include angular-material-theme($app-theme);
 
+@font-face {
+  font-family: GlacialIndifference;
+  src: url("./assets/glacial-indifference/GlacialIndifference-Regular.otf")
+    format("opentype");
+}
+
+@font-face {
+  font-family: OpenSans;
+  src: url("./assets/open-sans/OpenSans-Regular.ttf") format("opentype");
+}
+
 body,
 html {
   height: 100%;
@@ -32,6 +43,10 @@ html {
 
 body {
   margin: 0;
+}
+
+* {
+  font-family: GlacialIndifference, OpenSans !important;
 }
 
 .form__card--small {
@@ -60,7 +75,8 @@ body {
 }
 
 .radio-button__group--vertical {
-  display: flex; flex-direction: column;
+  display: flex;
+  flex-direction: column;
   .mat-radio-button ~ .mat-radio-button {
     margin-top: 16px;
   }
