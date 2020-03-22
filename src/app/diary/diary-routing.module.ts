@@ -1,3 +1,4 @@
+import { ContactPersonsResolver } from './../resolvers/contact-persons.resolver';
 import { GroupedDiaryEntriesResolver } from '../resolvers/grouped-diary-entries.resolver';
 import { SymptomsResolver } from './../resolvers/symptoms.resolver';
 import { DiaryEntryResolver } from './../resolvers/diary-entry.resolver';
@@ -16,12 +17,12 @@ const routes: Routes = [
   {
     path: 'edit/:id',
     component: DiaryEntryComponent,
-    resolve: { diaryEntry: DiaryEntryResolver, symptoms: SymptomsResolver }
+    resolve: { diaryEntry: DiaryEntryResolver, symptoms: SymptomsResolver, contactPersons: ContactPersonsResolver }
   },
   {
     path: 'new',
     component: DiaryEntryComponent,
-    resolve: { diaryEntry: DiaryEntryResolver, symptoms: SymptomsResolver }
+    resolve: { diaryEntry: DiaryEntryResolver, symptoms: SymptomsResolver, contactPersons: ContactPersonsResolver }
   }
 ];
 

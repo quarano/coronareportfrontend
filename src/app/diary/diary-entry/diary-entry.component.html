@@ -71,6 +71,20 @@
           >
         </mat-select>
       </mat-form-field>
+      <mat-form-field>
+        <mat-select
+          formControlName="contactPersons"
+          placeholder="Kontaktpersonen"
+          multiple
+        >
+          <mat-option
+            *ngFor="let contactPerson of contactPersons"
+            [value]="contactPerson.id"
+            >{{ contactPerson.firstname }}
+            {{ contactPerson.surename }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
     </mat-card-content>
     <mat-card-actions>
       <button

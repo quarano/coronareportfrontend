@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { GroupedDiaryEntriesResolver } from '../resolvers/grouped-diary-entries.resolver';
 import { AngularMaterialModule } from './../angular-material/angular-material.module';
 import { SymptomsResolver } from './../resolvers/symptoms.resolver';
@@ -14,7 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     DiaryRoutingModule,
     AngularMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   declarations: [DiaryComponent, DiaryEntryComponent],
   providers: [DiaryEntryResolver, SymptomsResolver, GroupedDiaryEntriesResolver]

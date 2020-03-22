@@ -1,3 +1,4 @@
+import { ContactPersonDto } from 'src/app/models/contact-person';
 import { SubSink } from 'subsink';
 import { DiaryEntryModifyDto } from './../../models/diary-entry';
 import { SnackbarService } from './../../services/snackbar.service';
@@ -19,6 +20,7 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
   diaryEntry: DiaryEntryDto;
   nonCharacteristicSymptoms: SymptomDto[] = [];
   characteristicSymptoms: SymptomDto[] = [];
+  contactPersons: ContactPersonDto[] = [];
   today = new Date();
   private subs = new SubSink();
 
@@ -45,6 +47,7 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
     this.subs.add(this.route.data.subscribe(data => {
       this.diaryEntry = data.diaryEntry;
       this.setSymptoms(data.symptoms);
+      this.contactPersons = data.contactPersons;
     }));
     this.buildForm();
   }
@@ -62,12 +65,14 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
   buildForm() {
     const characteristicSymptomIds = this.diaryEntry.characteristicSymptoms.map(s => s.id);
     const nonCharacteristicSymptomIds = this.diaryEntry.nonCharacteristicSymptoms.map(s => s.id);
+    const contactPersonIds = this.diaryEntry.contactPersonList.map(c => c.id);
     this.formGroup = this.formBuilder.group(
       {
         bodyTemperature: new FormControl({ value: this.diaryEntry.bodyTemperature, disabled: this.isReadonly }, Validators.required),
         characteristicSymptoms: new FormControl({ value: characteristicSymptomIds, disabled: this.isReadonly }),
         nonCharacteristicSymptoms: new FormControl({ value: nonCharacteristicSymptomIds, disabled: this.isReadonly }),
-        dateTime: new FormControl({ value: this.diaryEntry.dateTime, disabled: this.isReadonly }, Validators.required)
+        dateTime: new FormControl({ value: this.diaryEntry.dateTime, disabled: this.isReadonly }, Validators.required),
+        contactPersons: new FormControl({ value: contactPersonIds, disabled: this.isReadonly })
       }
     );
   }
@@ -75,12 +80,13 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
   onSubmit() {
     if (this.formGroup.valid && !this.diaryEntry.transmittedToHealthDepartment) {
       const diaryEntryModifyDto: DiaryEntryModifyDto
-        = { id: null, bodyTemperature: null, symptoms: [], dateTime: null };
+        = { id: null, bodyTemperature: null, symptoms: [], dateTime: null, contactPersonList: [] };
       diaryEntryModifyDto.symptoms = this.characteristicSymptomsControl.value;
       diaryEntryModifyDto.id = this.diaryEntry.id;
       diaryEntryModifyDto.bodyTemperature = this.formGroup.controls.bodyTemperature.value;
       diaryEntryModifyDto.dateTime = this.formGroup.controls.dateTime.value;
       diaryEntryModifyDto.symptoms.push(...this.formGroup.controls.nonCharacteristicSymptoms.value);
+      diaryEntryModifyDto.contactPersonList = this.formGroup.controls.contactPersons.value;
 
       if (this.isNew) {
         this.createEntry(diaryEntryModifyDto);

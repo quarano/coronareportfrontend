@@ -1,3 +1,4 @@
+import { ContactPersonDto } from './contact-person';
 import { SymptomDto } from './symptom';
 
 export interface DiaryEntryDto {
@@ -8,11 +9,13 @@ export interface DiaryEntryDto {
   nonCharacteristicSymptoms: SymptomDto[];
   dateTime: Date;
   transmittedToHealthDepartment: boolean;
+  contactPersonList: ContactPersonDto[];
 }
 
 export interface DiaryEntryModifyDto {
   bodyTemperature: number;
   id: number;
-  symptoms: string[];
+  symptoms: number[];
+  contactPersonList: number[];
   dateTime: Date;
 }
