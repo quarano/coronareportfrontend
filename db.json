@@ -646,7 +646,8 @@
       "id": "id1",
       "bodyTemperature": 38.6,
       "symptoms": [],
-      "date": "2020-03-20T02:24:00.000Z"
+      "dateTime": "2020-03-20T02:24:00.000Z",
+      "transmittedToHealthDepartment": true
     },
     {
       "id": "id2",
@@ -661,13 +662,15 @@
           "id": "Angst"
         }
       ],
-      "date": "2020-03-21T22:10:36.942Z"
+      "dateTime": "2020-03-21T22:10:36.942Z",
+      "transmittedToHealthDepartment": true
     },
     {
       "id": "Od2aDEU",
       "bodyTemperature": 35,
       "symptoms": [],
-      "date": "2020-03-22T06:56:07.275Z"
+      "dateTime": "2020-03-22T06:56:07.275Z",
+      "transmittedToHealthDepartment": false
     }
   ]
 }

@@ -1,7 +1,6 @@
 import { SubSink } from 'subsink';
 import { DiaryEntryModifyDto } from './../../models/diary-entry';
 import { SnackbarService } from './../../services/snackbar.service';
-import { Subscription } from 'rxjs';
 import { ApiService } from './../../services/api.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
@@ -25,6 +24,10 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
 
   get isNew(): boolean {
     return this.diaryEntry?.id == null;
+  }
+
+  get isReadonly(): boolean {
+    return this.diaryEntry.transmittedToHealthDepartment;
   }
 
   constructor(
@@ -60,16 +63,16 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
     const characteristicSymptomIds = this.diaryEntry.characteristicSymptoms.map(s => s.id);
     this.formGroup = this.formBuilder.group(
       {
-        bodyTemperature: new FormControl(this.diaryEntry.bodyTemperature, Validators.required),
-        characteristicSymptoms: new FormControl(characteristicSymptomIds),
-        nonCharacteristicSymptoms: new FormControl(this.diaryEntry.nonCharacteristicSymptoms),
-        dateTime: new FormControl(this.diaryEntry.dateTime, Validators.required)
+        bodyTemperature: new FormControl({ value: this.diaryEntry.bodyTemperature, disabled: this.isReadonly }, Validators.required),
+        characteristicSymptoms: new FormControl({ value: characteristicSymptomIds, disabled: this.isReadonly }),
+        nonCharacteristicSymptoms: new FormControl({ value: this.diaryEntry.nonCharacteristicSymptoms, disabled: this.isReadonly }),
+        dateTime: new FormControl({ value: this.diaryEntry.dateTime, disabled: this.isReadonly }, Validators.required)
       }
     );
   }
 
   onSubmit() {
-    if (this.formGroup.valid) {
+    if (this.formGroup.valid && !this.diaryEntry.transmittedToHealthDepartment) {
       const diaryEntryModifyDto: DiaryEntryModifyDto
         = { id: null, bodyTemperature: null, symptoms: [], dateTime: null };
       diaryEntryModifyDto.symptoms = this.characteristicSymptomsControl.value;

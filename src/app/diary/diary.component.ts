@@ -13,7 +13,7 @@ export class DiaryComponent implements OnInit, OnDestroy {
   diaryEntries: Map<string, DiaryEntryDto[]> = new Map<string, DiaryEntryDto[]>();
   private subs = new SubSink();
   today = new Date().toLocaleDateString();
-  displayedColumns = ['date', 'bodyTemperature', 'symptoms'];
+  displayedColumns = ['dateTime', 'bodyTemperature', 'symptoms', 'transmittedToHealthDepartment'];
 
   constructor(private route: ActivatedRoute) { }
 

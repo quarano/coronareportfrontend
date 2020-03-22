@@ -15,15 +15,15 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <table mat-table [dataSource]="group.value" class="mat-elevation-z8">
-        <ng-container matColumnDef="date">
+        <ng-container matColumnDef="dateTime">
           <th mat-header-cell *matHeaderCellDef>Uhrzeit</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.date | date: "HH:mm" }}
+            {{ element.dateTime | date: "HH:mm" }}
           </td>
         </ng-container>
 
         <ng-container matColumnDef="bodyTemperature">
-          <th mat-header-cell *matHeaderCellDef>Körpertemperatur</th>
+          <th mat-header-cell *matHeaderCellDef>Körpertemperatur in °C</th>
           <td mat-cell *matCellDef="let element">
             {{ element.bodyTemperature }}
           </td>
@@ -41,7 +41,12 @@
             Übertragen an Gesundheitsamt
           </th>
           <td mat-cell *matCellDef="let element">
-            {{ toString(element) }}
+            <i
+              class="material-icons"
+              *ngIf="element.transmittedToHealthDepartment"
+              style="color: green"
+              >done</i
+            >
           </td>
         </ng-container>
 
