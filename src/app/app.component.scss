@@ -2,6 +2,32 @@
   margin: 25px 20px;
 }
 
-.mat-toolbar.mat-primary {
+#header {
   background-image: linear-gradient(to right, #5ce1e6, #120816) !important;
+}
+
+#logo:hover,
+#logo:active {
+  cursor: pointer;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  opacity: 0.3;
+}
+
+img {
+  max-height: 95%;
+}
+
+#footer-wrapper {
+  position: absolute;
+  right: 2rem;
+  bottom: 0;
+  height: 64px;
+}
+
+#link {
+  text-decoration: none;
 }
