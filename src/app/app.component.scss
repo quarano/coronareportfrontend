@@ -11,10 +11,22 @@
   cursor: pointer;
 }
 
+$break-small: 480px;
+
 #footer {
   position: absolute;
   bottom: 0;
   opacity: 0.3;
+}
+
+@media (max-width: $break-small) {
+  #footer {
+    display: none;
+  }
+
+  #footer-wrapper {
+    display: none;
+  }
 }
 
 img {
@@ -31,8 +43,6 @@ img {
 #link {
   text-decoration: none;
 }
-
-$break-small: 480px;
 
 nav {
   margin-left: 40px;
