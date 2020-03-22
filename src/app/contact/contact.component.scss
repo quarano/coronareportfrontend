@@ -3,6 +3,12 @@
 }
 
 .example-header-image {
-  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-image: url("../../assets/conatct-person.png");
   background-size: cover;
+}
+
+mat-card:hover,
+mat-card:active {
+  cursor: pointer;
+  background-color: #f4f4f4;
 }

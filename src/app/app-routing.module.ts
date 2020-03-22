@@ -4,7 +4,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
 import { IsNotAuthenticatedGuard } from './guards/is-not-authenticated.guard';
 
-// ToDo: revert
 const routes: Routes = [
   {
     path: 'welcome', loadChildren: () =>
