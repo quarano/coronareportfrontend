@@ -675,35 +675,23 @@
     {
       "id": 3,
       "bodyTemperature": 35,
-      "symptoms": [
-        5,
-        null,
-        null
-      ],
+      "symptoms": [5, null, null],
       "dateTime": "2020-03-22T06:56:07.275Z"
     },
     {
       "id": 4,
       "bodyTemperature": 34,
-      "symptoms": [
-        5,
-        null,
-        6
-      ],
+      "symptoms": [5, null, 6],
       "dateTime": "2020-03-22T16:17:13.589Z"
     },
     {
       "id": 5,
       "bodyTemperature": 38,
-      "symptoms": [
-        5,
-        3,
-        6
-      ],
+      "symptoms": [5, 3, 6],
       "dateTime": "2020-03-22T14:28:10.930Z"
     }
   ],
-  "contactPersons": [
+  "contact": [
     {
       "id": 1,
       "firstname": "Agathe",
@@ -729,7 +717,15 @@
       "phone": "0177-3057246",
       "zipCode": "12345",
       "City": "Pusemuckel",
-      "email": "agathe@bauer.de"
+      "email": "frank@enstein.de"
+    },
+    {
+      "id": 4,
+      "firstname": "Helene",
+      "surename": "Fischer",
+      "zipCode": null,
+      "email": null,
+      "phone": "12465"
     }
   ]
 }

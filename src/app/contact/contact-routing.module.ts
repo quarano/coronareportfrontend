@@ -1,5 +1,5 @@
 import { ContactPersonsResolver } from './../resolvers/contact-persons.resolver';
-import { ContactEntryComponent } from './contact-entry/contact-entry.component';
+import { ContactPersonComponent } from './contact-person/contact-person.component';
 import { ContactComponent } from './contact.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -15,12 +15,12 @@ const routes: Routes = [
   },
   {
     path: 'edit/:id',
-    component: ContactEntryComponent,
+    component: ContactPersonComponent,
     resolve: { contactPerson: ContactPersonResolver }
   },
   {
     path: 'new',
-    component: ContactEntryComponent,
+    component: ContactPersonComponent,
     resolve: { contactPerson: ContactPersonResolver }
   }
 ];

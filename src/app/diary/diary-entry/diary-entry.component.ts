@@ -81,7 +81,6 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
       diaryEntryModifyDto.bodyTemperature = this.formGroup.controls.bodyTemperature.value;
       diaryEntryModifyDto.dateTime = this.formGroup.controls.dateTime.value;
       diaryEntryModifyDto.symptoms.push(...this.formGroup.controls.nonCharacteristicSymptoms.value);
-      console.log(diaryEntryModifyDto);
 
       if (this.isNew) {
         this.createEntry(diaryEntryModifyDto);
