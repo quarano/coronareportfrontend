@@ -1,6 +1,6 @@
 {
-  "name": "coronareportfrontend",
-  "short_name": "coronareportfrontend",
+  "name": "epitrack",
+  "short_name": "epitrack",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
