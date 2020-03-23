@@ -23,6 +23,7 @@
     "@angular/platform-browser": "~9.0.7",
     "@angular/platform-browser-dynamic": "~9.0.7",
     "@angular/router": "~9.0.7",
+    "@angular/service-worker": "~9.0.7",
     "moment": "^2.24.0",
     "nan": "^2.14.0",
     "ngx-mat-datetime-picker": "^2.0.3",

@@ -17,6 +17,8 @@ import localeDe from '@angular/common/locales/de';
 import {WelcomeModule} from './welcome/welcome.module';
 import { ContactModule } from './contact/contact.module';
 import {AuthInterceptor} from './interceptors/auth-interceptor';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 registerLocaleData(localeDe, 'de');
@@ -35,7 +37,8 @@ registerLocaleData(localeDe, 'de');
     HttpClientModule,
     DiaryModule,
     WelcomeModule,
-    ContactModule
+    ContactModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     SnackbarService,
