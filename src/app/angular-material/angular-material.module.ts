@@ -22,6 +22,9 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from 'ngx-mat-datetime-picker';
 import { NgxMatMomentModule } from 'ngx-mat-moment-adapter';
 
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 const materialModules = [
   MatButtonModule,
   MatDatepickerModule,
@@ -41,7 +44,10 @@ const materialModules = [
   MatExpansionModule,
   MatTableModule,
   MatBadgeModule,
-  MatIconModule
+  MatIconModule,
+  MatGridListModule,
+  MatCheckboxModule
+  
 ];
 
 @NgModule({
