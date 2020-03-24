@@ -2,7 +2,7 @@ FROM gmathieu/node-browsers:3.0.0 AS build
 
 COPY package.json /usr/angular-workdir/
 WORKDIR /usr/angular-workdir
-# RUN npm install
+#npm install is done in cloud build steps
 
 COPY ./ /usr/angular-workdir
 RUN npm run build-prod
