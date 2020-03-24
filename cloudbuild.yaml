@@ -19,3 +19,4 @@ steps:
       - 'managed'
 images:
   - 'gcr.io/$PROJECT_ID/coronareportteam/coronareportfrontend:$COMMIT_SHA'
+timeout: 900s
