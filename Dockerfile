@@ -2,7 +2,7 @@ FROM gmathieu/node-browsers:3.0.0 AS build
 
 COPY package.json /usr/angular-workdir/
 WORKDIR /usr/angular-workdir
-RUN npm install
+# RUN npm install
 
 COPY ./ /usr/angular-workdir
 RUN npm run build-prod
