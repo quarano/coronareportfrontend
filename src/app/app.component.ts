@@ -4,6 +4,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import {ProgressBarService} from './services/progress-bar.service';
 import {UserService} from './services/user.service';
+import {TenantService} from './services/tenant.service';
+import {TENANTS} from './services/tenants';
 
 @Component({
   selector: 'app-root',
@@ -17,10 +19,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public progressBarActive$$ = this.progressBarService.progressBarActive$$;
   public isAuthenticated$$ = this.userService.isAuthenticated$$;
+  public tenant = this.tenantService.tenant;
+  public tenantsEnum = TENANTS;
 
   constructor(private apiService: ApiService,
               private userService: UserService,
-              private progressBarService: ProgressBarService) {
+              private progressBarService: ProgressBarService,
+              private tenantService: TenantService) {
 
   }
 
