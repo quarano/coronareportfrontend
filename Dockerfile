@@ -13,7 +13,8 @@ FROM nginx:1.15.8-alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 COPY ./dev/nginx.conf /etc/nginx/nginx.conf
-COPY  ./dist/coronareportfrontend /usr/share/nginx/html
+
+COPY --from=build  /usr/angular-workdir/dist/coronareportfrontend /usr/share/nginx/html
 
 RUN echo "nginx -g 'daemon off;'" > run.sh
 
