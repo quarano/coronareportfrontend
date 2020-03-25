@@ -15,8 +15,37 @@
   *ngIf="progressBarActive$$ | async"
 ></mat-progress-bar>
 <div style="height: 4px" *ngIf="!(progressBarActive$$ | async)"></div>
-<div class="content">
-  <router-outlet></router-outlet>
+<div class="bounds">
+  <div
+    class="content"
+    fxLayout="row"
+    fxLayout.sm="column"
+    fxLayout.xs="column"
+    fxFlexFill
+    fxLayoutGap="2vh"
+  >
+    <div fxFlex="25" class="sec1"></div>
+    <div fxFlex="50" class="sec2"><router-outlet></router-outlet></div>
+    <div fxFlex="25" fxLayoutAlign="center center">
+      <img src="../../assets/postit.png" id="post-it" height="400rem" />
+      <div id="post-it-text">
+        <p style="font-family: 'Indie Flower'; font-size:xx-large;">
+          Wussten Sie schon?
+        </p>
+        <p style="font-family: 'Indie Flower';">
+          Durch die Verwendung dieser Plattform helfen Sie mit, wichtige
+          Ressourcen für Notfälle freizuhalten.
+        </p>
+        <a
+          mat-stroked-button
+          href="https://www.youtube.com/watch?v=z__mJRP8O0w&feature=youtu.be"
+          target="_blank"
+          style="float: right;"
+          >Zeig mir mehr</a
+        >
+      </div>
+    </div>
+  </div>
 </div>
 <mat-toolbar color="accent" id="footer"
   ><a href="https://trendtwitter.com/WirvsVirusHack/" target="_blank" id="link"

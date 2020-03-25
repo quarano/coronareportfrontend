@@ -26,12 +26,14 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 @font-face {
   font-family: GlacialIndifference;
-  src: url("./assets/glacial-indifference/GlacialIndifference-Regular.otf") format("opentype");
+  src: url("./assets/glacial-indifference/GlacialIndifference-Regular.otf")
+    format("opentype");
 }
 
 @font-face {
   font-family: GlacialIndifferenceBold;
-  src: url("./assets/glacial-indifference/GlacialIndifference-Bold.otf") format("opentype");
+  src: url("./assets/glacial-indifference/GlacialIndifference-Bold.otf")
+    format("opentype");
 }
 
 @font-face {
@@ -67,7 +69,6 @@ h6 {
 }
 
 .form__card--small {
-  width: 30%;
   margin-left: auto;
   margin-right: auto;
 
