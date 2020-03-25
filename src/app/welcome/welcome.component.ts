@@ -1,28 +1,32 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from '../services/user.service';
-import {Router} from '@angular/router';
-import {BehaviorSubject} from 'rxjs';
-import {delay, filter, tap} from 'rxjs/operators';
-import {Client} from '../models/client';
-import {SnackbarService} from '../services/snackbar.service';
-import {ProgressBarService} from '../services/progress-bar.service';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+import { delay, filter, tap } from 'rxjs/operators';
+import { Client } from '../models/client';
+import { SnackbarService } from '../services/snackbar.service';
+import { ProgressBarService } from '../services/progress-bar.service';
 
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss']
 })
-export class WelcomeComponent implements OnInit{
+export class WelcomeComponent implements OnInit {
 
   public identCode = 'A47-9GE-BB1';
   public enteredCode = '';
   public existingCode$$ = new BehaviorSubject<boolean>(null);
   public checkingCode = false;
+  prototypeText = 'Dieser Prototyp dient lediglich zu Demonstrationszwecken und ist NICHT an ' +
+    'ein Gesundheitsamt angebunden! Bitte KEINE ECHTEN, KRITISCHEN DATEN ohne ' +
+    'Aufforderung durch die zuständigen Behörden eingeben!';
 
-  constructor(private userService: UserService,
-              private router: Router,
-              private snackbarService: SnackbarService,
-              private progressBarService: ProgressBarService) {
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private snackbarService: SnackbarService,
+    private progressBarService: ProgressBarService) {
   }
 
   ngOnInit(): void {

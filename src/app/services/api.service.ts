@@ -24,7 +24,7 @@ export class ApiService {
   }
 
   getContactPersons(): Observable<ContactPersonDto[]> {
-    return this.httpClient.get<ContactPersonDto[]>(`${this.baseUrl}/contact`).pipe(share());
+    return this.httpClient.get<ContactPersonDto[]>(`${this.baseUrl}/contact/`).pipe(share());
   }
 
   getContactPerson(id: number): Observable<ContactPersonDto> {
@@ -51,7 +51,7 @@ export class ApiService {
   }
 
   getDiaryEntries(): Observable<DiaryEntryDto[]> {
-    return this.httpClient.get<DiaryEntryDto[]>(`${this.baseUrl}/diaryEntries`).pipe(share());
+    return this.httpClient.get<DiaryEntryDto[]>(`${this.baseUrl}/diaryentries`).pipe(share());
   }
 
   createDiaryEntry(diaryEntry: DiaryEntryModifyDto): Observable<DiaryEntryDto> {
@@ -71,11 +71,11 @@ export class ApiService {
   }
 
   createFirstReport(firstReport: FirstQuery, clientCode: string): Observable<any> {
-    return this.httpClient.post(`${this.baseUrl}/firstReport/${clientCode}`, firstReport);
+    return this.httpClient.post(`${this.baseUrl}/firstreport/${clientCode}`, firstReport);
   }
 
   createContactPerson(contactPerson: ContactPersonDto): Observable<ContactPersonDto> {
-    return this.httpClient.post<ContactPersonDto>(`${this.baseUrl}/contact`, contactPerson);
+    return this.httpClient.post<ContactPersonDto>(`${this.baseUrl}/contact/`, contactPerson);
   }
 
   modifyContactPerson(contactPerson: ContactPersonDto) {

@@ -12,9 +12,22 @@
 }
 
 $break-small: 480px;
+$break-large: 1200px;
+
+.tenant-wrapper {
+  text-align: right;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+
+  @media (max-width: $break-large) {
+    display: none;
+  }
+}
 
 #footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   opacity: 0.3;
 }
@@ -72,6 +85,7 @@ nav {
     &:hover {
       background-color: rgba(255, 255, 255, 0.2);
     }
+
     & ~ a {
       margin-left: 20px;
 
@@ -79,6 +93,7 @@ nav {
         margin-left: 5px;
       }
     }
+
     &.active {
       background-color: rgba(255, 255, 255, 0.2);
     }

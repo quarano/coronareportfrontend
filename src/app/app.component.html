@@ -9,6 +9,13 @@
     <a routerLink="/diary" routerLinkActive="active">Tagebuch</a>
     <a routerLink="/contacts" routerLinkActive="active">Kontakte</a>
   </nav>
+  <div style="flex: 1 1 auto"></div>
+  <div class="tenant-wrapper">
+    <ng-container [ngSwitch]="tenant">
+      <h6 *ngSwitchCase="tenantsEnum.develop">Develop</h6>
+      <h6 *ngSwitchCase="tenantsEnum.testhausen">In Kooperation mit Gesundheitsamt Testhausen</h6>
+    </ng-container>
+  </div>
 </mat-toolbar>
 <mat-progress-bar
   mode="query"
