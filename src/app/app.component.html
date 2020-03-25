@@ -13,7 +13,9 @@
   <div class="tenant-wrapper">
     <ng-container [ngSwitch]="tenant">
       <h6 *ngSwitchCase="tenantsEnum.develop">Develop</h6>
-      <h6 *ngSwitchCase="tenantsEnum.testhausen">In Kooperation mit Gesundheitsamt Testhausen</h6>
+      <h6 *ngSwitchCase="tenantsEnum.testhausen">
+        In Kooperation mit Gesundheitsamt Testhausen
+      </h6>
     </ng-container>
   </div>
 </mat-toolbar>
@@ -22,18 +24,20 @@
   *ngIf="progressBarActive$$ | async"
 ></mat-progress-bar>
 <div style="height: 4px" *ngIf="!(progressBarActive$$ | async)"></div>
-<div class="bounds">
+<div>
   <div
     class="content"
     fxLayout="row"
+    fxLayout.md="column"
     fxLayout.sm="column"
     fxLayout.xs="column"
-    fxFlexFill
     fxLayoutGap="2vh"
   >
-    <div fxFlex="25" class="sec1"></div>
-    <div fxFlex="50" class="sec2"><router-outlet></router-outlet></div>
-    <div fxFlex="25" fxLayoutAlign="center center">
+    <div fxFlex="30"></div>
+    <div fxFlex="40" fxLayoutAlign="center top">
+      <router-outlet></router-outlet>
+    </div>
+    <div fxFlex="30" fxLayoutAlign="center center">
       <img src="../../assets/postit.png" id="post-it" height="400rem" />
       <div id="post-it-text">
         <p style="font-family: 'Indie Flower'; font-size:xx-large;">

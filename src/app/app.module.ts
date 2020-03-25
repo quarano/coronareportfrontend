@@ -31,13 +31,13 @@ registerLocaleData(localeDe, 'de');
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    FlexLayoutModule,
     AngularMaterialModule,
     FormsModule,
     HttpClientModule,
     DiaryModule,
     WelcomeModule,
-    ContactModule,
-    FlexLayoutModule
+    ContactModule
   ],
   providers: [
     SnackbarService,

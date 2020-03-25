@@ -2,11 +2,11 @@
   <i class="material-icons">add</i>
   Neuen Kontakt anlegen
 </button>
-<mat-grid-list cols="8">
-  <mat-grid-tile *ngFor="let contact of contacts">
-    <mat-card class="example-card" [routerLink]="['edit', contact.id]">
+<div class="content" fxLayout="row" fxFlexFill>
+  <div fxFlex="25" fxFlex.md="50" *ngFor="let contact of contacts">
+    <mat-card class="contact-card" [routerLink]="['edit', contact.id]">
       <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
+        <div mat-card-avatar class="header-image"></div>
         <mat-card-title
           >{{ contact.firstname }} {{ contact.surename }}</mat-card-title
         >
@@ -20,5 +20,5 @@
         </p>
       </mat-card-content>
     </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+  </div>
+</div>
