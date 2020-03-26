@@ -9,11 +9,11 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'build',
+      '--build-arg',
+      'ENV=prod',
       '-t',
       'gcr.io/$PROJECT_ID/coronareportteam/coronareportfrontend:$COMMIT_SHA',
-      '.',
-      '--build-arg',
-      'BUILD_ENV=prod'
+      '.'
     ]
     volumes:
       - name: 'modules'
