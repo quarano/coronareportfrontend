@@ -2,23 +2,33 @@
   <i class="material-icons">add</i>
   Neuen Kontakt anlegen
 </button>
-<div class="content" fxLayout="row" fxFlexFill>
-  <div fxFlex="25" fxFlex.md="50" *ngFor="let contact of contacts">
-    <mat-card class="contact-card" [routerLink]="['edit', contact.id]">
-      <mat-card-header>
-        <div mat-card-avatar class="header-image"></div>
-        <mat-card-title
-          >{{ contact.firstname }} {{ contact.surename }}</mat-card-title
-        >
-        <mat-card-subtitle>{{
-          contact.email || "(ohne E-Mail)"
-        }}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          <i class="material-icons" size="small">phone</i> {{ contact.phone }}
-        </p>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
+<mat-card
+  *ngIf="contacts.length > 0"
+  class="form__card--small form__card--animated"
+>
+  <mat-card-header>
+    <mat-card-title>Ihre Kontakte</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list role="list">
+      <ng-container *ngFor="let contact of contacts; let first = first">
+        <mat-divider *ngIf="first"></mat-divider>
+        <mat-list-item role="listitem" [routerLink]="['edit', contact.id]">
+          <img
+            matListAvatar
+            src="../../assets/conatct-person.png"
+            alt="contact"
+          />
+          <h3 matLine>{{ contact.firstname }} {{ contact.surename }}</h3>
+          <p matLine *ngIf="contact.email">
+            <span>E-Mail: {{ contact.email }} </span>
+          </p>
+          <p matLine>
+            <span> Tel.: {{ contact.phone }} </span>
+          </p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </ng-container>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
