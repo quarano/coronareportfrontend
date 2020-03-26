@@ -14,8 +14,6 @@ import localeDe from '@angular/common/locales/de';
 import { WelcomeModule } from './welcome/welcome.module';
 import { ContactModule } from './contact/contact.module';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
-import { PostItComponent } from './post-it/post-it.component';
-
 
 registerLocaleData(localeDe, 'de');
 
@@ -23,7 +21,6 @@ registerLocaleData(localeDe, 'de');
   declarations: [
     AppComponent,
     NotFoundComponent,
-    PostItComponent
   ],
   imports: [
     BrowserModule,
