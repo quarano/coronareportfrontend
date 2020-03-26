@@ -1,11 +1,11 @@
-import {Injectable, OnInit} from '@angular/core';
-import {BehaviorSubject, Observable, of, throwError} from 'rxjs';
-import {Client} from '../models/client';
-import {ApiService} from './api.service';
-import {catchError, delay, filter, first, switchMap, tap} from 'rxjs/operators';
-import {Router} from '@angular/router';
-import {BackendClient} from '../models/backend-client';
-import {FirstQuery} from '../models/first-query';
+import { Injectable, } from '@angular/core';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { Client } from '../models/client';
+import { ApiService } from './api.service';
+import { catchError, tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { BackendClient } from '../models/backend-client';
+import { FirstQuery } from '../models/first-query';
 
 export const USERCODE_STORAGE_KEY = 'covu';
 
@@ -38,8 +38,9 @@ export class UserService {
     }
   }
 
-  constructor(private apiService: ApiService,
-              private router: Router) {
+  constructor(
+    private apiService: ApiService,
+    private router: Router) {
     // On starting app, check if local code exists and if it is valid
     const clientCode = this.localClientCode;
     if (clientCode !== null) {
