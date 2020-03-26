@@ -1,0 +1,14 @@
+<mat-toolbar color="accent" id="footer"
+  ><a href="https://trendtwitter.com/WirvsVirusHack/" target="_blank" id="link">
+    <h6 style="color: #f4f4f4;">#wirvsvirushack</h6>
+  </a></mat-toolbar
+>
+
+<div id="footer-wrapper">
+  <a
+    *ngFor="let item of pictureUris | keyvalue"
+    [href]="item.key"
+    target="_blank"
+    ><img [src]="item.value" style="margin-left: 1rem;"
+  /></a>
+</div>
