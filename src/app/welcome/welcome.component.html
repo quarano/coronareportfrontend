@@ -2,10 +2,23 @@
   class="form__card--small form__card--animated"
   style="margin-bottom: 1rem; text-align: center; color:red"
 >
-  <i class="material-icons">warning</i>
   <span style="margin-left: 1rem;">
     Im Falle eines medizinischen Notfalls wählen Sie bitte umgehend den Notruf
   </span>
+</mat-card>
+
+<mat-card
+  class="form__card--small form__card--animated"
+  style="margin-bottom: 1rem; text-align: center;"
+  id="info-card"
+>
+  <div class="marquee">
+    <p class="info-text">
+      Dieser Prototyp dient lediglich zu Demonstrationszwecken und ist NICHT an
+      ein Gesundheitsamt angebunden! Bitte KEINE ECHTEN, KRITISCHEN DATEN ohne
+      Aufforderung durch die zuständigen Behörden eingeben!
+    </p>
+  </div>
 </mat-card>
 
 <mat-card
@@ -58,9 +71,7 @@
       >
     </p>
     <p>Sie brauchen Unterstützung?</p>
-    <a mat-stroked-button href="https://tools.rki.de/PLZTool/" target="_blank"
-      >Kontaktieren Sie uns</a
-    >
+    <a mat-stroked-button href="#" target="_blank">Kontaktieren Sie uns</a>
   </mat-card-content>
   <mat-card-actions> </mat-card-actions>
 </mat-card>
