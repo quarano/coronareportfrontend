@@ -641,7 +641,7 @@
       "name": "Zyanose"
     }
   ],
-  "diaryEntries": [
+  "diaryentries": [
     {
       "id": 1,
       "bodyTemperature": 38.6,
@@ -736,8 +736,8 @@
     },
     {
       "id": 4,
-      "firstname": "Helene",
-      "surename": "Fischer",
+      "firstname": "Karl-Friedrich",
+      "surename": "von Domaros",
       "zipCode": null,
       "email": null,
       "phone": "12465"

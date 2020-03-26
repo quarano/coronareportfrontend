@@ -30,16 +30,7 @@ $break-large: 1200px;
   position: fixed;
   bottom: 0;
   opacity: 0.3;
-}
-
-@media (max-width: $break-small) {
-  #footer {
-    display: none;
-  }
-
-  #footer-wrapper {
-    display: none;
-  }
+  z-index: 999;
 }
 
 img {
@@ -47,10 +38,24 @@ img {
 }
 
 #footer-wrapper {
-  position: absolute;
+  position: fixed;
   right: 1rem;
   bottom: 0;
   height: 56px;
+  z-index: 1000;
+}
+
+#post-it-text {
+  position: absolute;
+  width: 17rem;
+  transform: rotate(14deg);
+  font-size: x-large;
+  line-height: 1.3;
+  z-index: 2;
+}
+
+#post-it {
+  z-index: 1;
 }
 
 #link {

@@ -18,9 +18,6 @@ export class WelcomeComponent implements OnInit {
   public enteredCode = '';
   public existingCode$$ = new BehaviorSubject<boolean>(null);
   public checkingCode = false;
-  prototypeText = 'Dieser Prototyp dient lediglich zu Demonstrationszwecken und ist NICHT an ' +
-    'ein Gesundheitsamt angebunden! Bitte KEINE ECHTEN, KRITISCHEN DATEN ohne ' +
-    'Aufforderung durch die zuständigen Behörden eingeben!';
 
   constructor(
     private userService: UserService,
