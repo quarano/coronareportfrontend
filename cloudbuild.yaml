@@ -12,7 +12,8 @@ steps:
       '-t',
       'gcr.io/$PROJECT_ID/coronareportteam/coronareportfrontend:$COMMIT_SHA',
       '.',
-      '--build-args", BUILD_ENV=prod'
+      '--build-arg',
+      'BUILD_ENV=prod'
     ]
     volumes:
       - name: 'modules'
