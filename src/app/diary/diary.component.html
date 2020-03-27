@@ -4,7 +4,7 @@
 </button>
 <mat-card *ngIf="diaryEntries.size > 0">
   <mat-card-content>
-    <ng-container *ngFor="let group of diaryEntries | keyvalue">
+    <ng-container *ngFor="let group of diaryEntries | keyvalue: originalOrder">
       <app-diary-list-item
         [date]="group.key"
         [entries]="group.value"

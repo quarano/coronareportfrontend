@@ -48,7 +48,7 @@ export class WelcomeComponent implements OnInit {
         (client: Client) => {
           this.checkingCode = false;
           this.progressBarService.progressBarState = false;
-          this.snackbarService.confirm('Der Code wurde erfolgreich geladen.');
+          this.snackbarService.success('Der Code wurde erfolgreich geladen.');
           this.router.navigate(['/diary']);
         },
         error => {
