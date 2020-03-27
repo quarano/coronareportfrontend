@@ -4,6 +4,9 @@
 
 #header {
   background-image: linear-gradient(to right, #5ce1e6, #120816) !important;
+  position: fixed;
+  top:0;
+  z-index: 5000;
 }
 
 #logo:hover,
@@ -25,6 +28,13 @@ $break-large: 1200px;
   @media (max-width: $break-large) {
     display: none;
   }
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  opacity: 0.3;
+  z-index: 999;
 }
 
 img {

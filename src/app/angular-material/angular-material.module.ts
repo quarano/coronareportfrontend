@@ -25,6 +25,7 @@ import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from 'ngx-mat-date
 import { NgxMatMomentModule } from 'ngx-mat-moment-adapter';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatListModule } from '@angular/material/list';
+import {MatSortModule} from '@angular/material/sort';
 
 const materialModules = [
   MatButtonModule,
@@ -49,7 +50,8 @@ const materialModules = [
   MatIconModule,
   MatGridListModule,
   MatListModule,
-  FlexLayoutModule
+  FlexLayoutModule,
+  MatSortModule
 ];
 
 @NgModule({

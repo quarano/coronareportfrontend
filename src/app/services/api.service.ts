@@ -9,6 +9,8 @@ import { DiaryEntryDto, DiaryEntryModifyDto } from '../models/diary-entry';
 import { groupBy } from '../utils/groupBy';
 import { FirstQuery } from '../models/first-query';
 import { ContactPersonDto } from '../models/contact-person';
+import {TenantClient} from '../models/tenant-client';
+import {Tenant} from '../models/tenant';
 
 @Injectable({
   providedIn: 'root'
@@ -80,5 +82,9 @@ export class ApiService {
 
   modifyContactPerson(contactPerson: ContactPersonDto) {
     return this.httpClient.put(`${this.baseUrl}/contact/${contactPerson.id}`, contactPerson);
+  }
+
+  getReport(healthDepartmentId: string): Observable<Array<TenantClient>> {
+    return this.httpClient.get<Array<TenantClient>>(`${this.baseUrl}/report/${healthDepartmentId }`);
   }
 }

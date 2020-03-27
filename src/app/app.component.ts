@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { ProgressBarService } from './services/progress-bar.service';
 import { UserService } from './services/user.service';
 import { TenantService } from './services/tenant.service';
-import { TENANTS } from './services/tenants';
+import { TenantsEnum } from './services/tenantsEnum';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,13 +13,14 @@ import { TENANTS } from './services/tenants';
 export class AppComponent {
   public progressBarActive$$ = this.progressBarService.progressBarActive$$;
   public isAuthenticated$$ = this.userService.isAuthenticated$$;
-  public tenant = this.tenantService.tenant;
-  public tenantsEnum = TENANTS;
+  public urlTenant = this.tenantService.urlTenant;
+  public tenant$$ = this.tenantService.tenant$$;
+  public tenantsEnum = TenantsEnum;
 
   constructor(
     private userService: UserService,
     private progressBarService: ProgressBarService,
+    public router: Router,
     private tenantService: TenantService) {
-
   }
 }

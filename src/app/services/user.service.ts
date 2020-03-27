@@ -62,7 +62,7 @@ export class UserService {
         catchError(error => {
           this.localClientCode = null;
           if (withErrorNavigation) {
-            this.router.navigate(['/welcome']);
+            // this.router.navigate(['/welcome']);
           }
           return throwError('Code invalid! No Client found.');
         }),
