@@ -1,6 +1,4 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {of} from 'rxjs';
-import {MOCK_CLIENTS} from './mock-clients';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {BackendClient} from '../../models/backend-client';
 import {MatTableDataSource} from '@angular/material/table';
