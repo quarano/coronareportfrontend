@@ -11,10 +11,13 @@
   </nav>
   <div style="flex: 1 1 auto"></div>
   <div class="tenant-wrapper">
-    <ng-container [ngSwitch]="tenant">
+    <ng-container [ngSwitch]="urlTenant">
       <h6 *ngSwitchCase="tenantsEnum.develop">Develop</h6>
       <h6 *ngSwitchCase="tenantsEnum.testhausen">
         In Kooperation mit Gesundheitsamt Testhausen
+      </h6>
+      <h6 *ngSwitchCase="tenantsEnum.testberg">
+        Gesundheitsamt Testberg
       </h6>
     </ng-container>
   </div>
@@ -33,12 +36,12 @@
     fxLayout.xs="column"
     fxLayoutGap="2vh"
   >
-    <div fxFlex="30"></div>
-    <div fxFlex="40" fxLayoutAlign="center top">
+    <div fxFlex="30" *ngIf="!this.router.url.startsWith('/tenant-admin')"></div>
+    <div class="router-content" fxLayoutAlign="center top" [fxFlex]="!this.router.url.startsWith('/tenante-admin') ? '100' : '40'">
       <router-outlet></router-outlet>
     </div>
-    <div fxFlex="30" fxLayoutAlign="center center">
-      <img src="../../assets/postit.png" id="post-it" height="400rem" />
+    <div fxFlex="30" fxLayoutAlign="center center" *ngIf="this.router.url.startsWith('/welcome') || this.router.url.startsWith('/diary') || this.router.url.startsWith('/contacts')">
+      <img src="../../assets/postit.png" id="post-it" height="400rem"/>
       <div id="post-it-text">
         <p style="font-family: 'Indie Flower'; font-size:xx-large;">
           Wussten Sie schon?
@@ -52,22 +55,29 @@
           href="https://www.youtube.com/watch?v=z__mJRP8O0w&feature=youtu.be"
           target="_blank"
           style="float: right;"
-          >Zeig mir mehr</a
+        >Zeig mir mehr</a
         >
       </div>
     </div>
   </div>
 </div>
-<mat-toolbar color="accent" id="footer"
-  ><a href="https://trendtwitter.com/WirvsVirusHack/" target="_blank" id="link"
-    ><h6 style="color: #f4f4f4;">#wirvsvirushack</h6></a
-  ></mat-toolbar
->
-<div id="footer-wrapper">
-  <a href="https://wirvsvirushackathon.org/" target="_blank"
-    ><img src="./../assets/Logo_Projekt_01_weiss.png"
-  /></a>
-  <a href="https://opensource.org/" target="_blank"
-    ><img src="./../assets/open_source.png" style="margin-left: 1rem;"
-  /></a>
-</div>
+<mat-toolbar color="accent" id="footer">
+  <div class="footer__hashtag">
+    <a href="https://trendtwitter.com/WirvsVirusHack/" target="_blank" id="link">
+      <h6 style="color: #f4f4f4;">#wirvsvirushack</h6>
+    </a>
+  </div>
+  <div style="flex: 1 1 auto"></div>
+  <nav>
+    <a routerLink="/tenant-admin" routerLinkActive="active">Für Behörden</a>
+  </nav>
+  <div style="flex: 1 1 auto"></div>
+  <div id="footer-wrapper">
+    <a href="https://wirvsvirushackathon.org/" target="_blank">
+      <img src="./../assets/Logo_Projekt_01_weiss.png"/>
+    </a>
+    <a href="https://opensource.org/" target="_blank">
+      <img src="./../assets/open_source.png" style="margin-left: 1rem;"/>
+    </a>
+  </div>
+</mat-toolbar>
