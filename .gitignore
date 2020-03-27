@@ -44,3 +44,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+.vs/ProjectSettings.json
+.vs/slnx.sqlite
+.vs/Frontend/config/applicationhost.config
+.vs/Frontend/v16/TestStore/0/000-0000.testlog
+.vs/Frontend/v16/TestStore/0/testlog.manifest
