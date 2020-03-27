@@ -4,13 +4,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BackendClient } from '../models/backend-client';
-import { share, map } from 'rxjs/operators';
+import { share, map, tap } from 'rxjs/operators';
 import { DiaryEntryDto, DiaryEntryModifyDto } from '../models/diary-entry';
 import { groupBy } from '../utils/groupBy';
 import { FirstQuery } from '../models/first-query';
 import { ContactPersonDto } from '../models/contact-person';
-import {TenantClient} from '../models/tenant-client';
-import {Tenant} from '../models/tenant';
+import { TenantClient } from '../models/tenant-client';
+import { Tenant } from '../models/tenant';
 
 @Injectable({
   providedIn: 'root'
@@ -36,24 +36,35 @@ export class ApiService {
   getDiaryEntry(id: number): Observable<DiaryEntryDto> {
     return this.httpClient.get<DiaryEntryDto>(`${this.baseUrl}/diaryentries/${id}`)
       .pipe(
+        share(),
         map(entry => {
           entry.characteristicSymptoms = entry.symptoms.filter(s => s.characteristic);
           entry.nonCharacteristicSymptoms = entry.symptoms.filter(s => !s.characteristic);
+          entry.dateTime = this.getDate(entry.dateTime);
           return entry;
         }),
-        share()
       );
+  }
+
+  private getDate(date: Date): Date {
+    return new Date(date + 'Z');
   }
 
   getGroupedDiaryEntries(): Observable<Map<string, DiaryEntryDto[]>> {
     return this.getDiaryEntries()
       .pipe(
-        map(entries => groupBy<DiaryEntryDto>(entries, e => new Date(e.dateTime).toLocaleDateString()))
+        map(entries => groupBy<DiaryEntryDto>(entries, e => e.dateTime.toLocaleDateString())),
       );
   }
 
   getDiaryEntries(): Observable<DiaryEntryDto[]> {
-    return this.httpClient.get<DiaryEntryDto[]>(`${this.baseUrl}/diaryentries`).pipe(share());
+    return this.httpClient.get<DiaryEntryDto[]>(`${this.baseUrl}/diaryentries`)
+      .pipe(
+        share(),
+        map(entries => {
+          entries.forEach(e => e.dateTime = this.getDate(e.dateTime));
+          return entries;
+        }));
   }
 
   createDiaryEntry(diaryEntry: DiaryEntryModifyDto): Observable<DiaryEntryDto> {
@@ -85,6 +96,6 @@ export class ApiService {
   }
 
   getReport(healthDepartmentId: string): Observable<Array<TenantClient>> {
-    return this.httpClient.get<Array<TenantClient>>(`${this.baseUrl}/report/${healthDepartmentId }`);
+    return this.httpClient.get<Array<TenantClient>>(`${this.baseUrl}/report/${healthDepartmentId}`);
   }
 }

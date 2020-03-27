@@ -50,7 +50,6 @@ export class ContactPersonComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    console.log(this.formGroup.valid);
     if (this.formGroup.valid) {
       Object.assign(this.contactPerson, this.formGroup.value);
 
