@@ -14,6 +14,7 @@ import localeDe from '@angular/common/locales/de';
 import { WelcomeModule } from './welcome/welcome.module';
 import { ContactModule } from './contact/contact.module';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
+import { FooterComponent } from './footer/footer.component';
 
 registerLocaleData(localeDe, 'de');
 
@@ -21,6 +22,7 @@ registerLocaleData(localeDe, 'de');
   declarations: [
     AppComponent,
     NotFoundComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

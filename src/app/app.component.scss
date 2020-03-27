@@ -5,12 +5,13 @@
 #header {
   background-image: linear-gradient(to right, #5ce1e6, #120816) !important;
   position: fixed;
-  top:0;
+  top: 0;
   z-index: 5000;
 }
 
 #logo:hover,
-#logo:active {
+#logo:active,
+#logo:focus {
   cursor: pointer;
 }
 
@@ -29,23 +30,8 @@ $break-large: 1200px;
   }
 }
 
-#footer {
-  position: fixed;
-  bottom: 0;
-  z-index: 999;
-  background-color: rgba(18,8,22,0.3);
-  .footer__hashtag {
-    opacity: 0.3;
-  }
-}
-
 img {
   max-height: 95%;
-}
-
-#footer-wrapper {
-  height: 56px;
-  z-index: 1000;
 }
 
 #post-it-text {
@@ -64,10 +50,6 @@ img {
 .router-content {
   padding-bottom: 120px;
   margin-top: 80px;
-}
-
-#link {
-  text-decoration: none;
 }
 
 nav {
