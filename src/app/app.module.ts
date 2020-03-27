@@ -37,6 +37,7 @@ registerLocaleData(localeDe, 'de');
   ],
   providers: [
     SnackbarService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [
     AppComponent
