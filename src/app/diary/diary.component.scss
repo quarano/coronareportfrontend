@@ -19,3 +19,24 @@ table {
 .mat-card-header-text {
   margin: 0 !important;
 }
+
+.column {
+  margin: 0 20px 0 20px;
+  &-1 {
+    width: 19%;
+  }
+  &-2 {
+    width: 79%;
+  }
+
+  float: left;
+}
+
+p {
+  display: flex;
+}
+
+.value {
+  line-height: 1.7;
+  margin-left: 5px;
+}
