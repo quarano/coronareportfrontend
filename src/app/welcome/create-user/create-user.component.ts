@@ -1,15 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {BehaviorSubject, Subject} from 'rxjs';
-import {Client} from '../../models/client';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {FirstQuery} from '../../models/first-query';
-import {UserService} from '../../services/user.service';
-import {BackendClient} from '../../models/backend-client';
-import {SnackbarService} from '../../services/snackbar.service';
-import {ProgressBarService} from '../../services/progress-bar.service';
-import {switchMap} from 'rxjs/operators';
-import {ApiService} from '../../services/api.service';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { Client } from '../../models/client';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FirstQuery } from '../../models/first-query';
+import { UserService } from '../../services/user.service';
+import { BackendClient } from '../../models/backend-client';
+import { SnackbarService } from '../../services/snackbar.service';
+import { ProgressBarService } from '../../services/progress-bar.service';
+import { switchMap } from 'rxjs/operators';
+import { ApiService } from '../../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-user',
@@ -27,10 +27,10 @@ export class CreateUserComponent implements OnInit {
   public clientCode: string | undefined = undefined;
 
   constructor(private userService: UserService,
-              private snackbarService: SnackbarService,
-              private apiService: ApiService,
-              private router: Router,
-              private progressBarService: ProgressBarService) {
+    private snackbarService: SnackbarService,
+    private apiService: ApiService,
+    private router: Router,
+    private progressBarService: ProgressBarService) {
   }
 
   ngOnInit(): void {
@@ -52,7 +52,7 @@ export class CreateUserComponent implements OnInit {
         () => {
           this.progressBarService.progressBarState = false;
           this.clientCode = clientCode;
-          this.snackbarService.confirm('Die Registrierung war erfolgreich.');
+          this.snackbarService.success('Die Registrierung war erfolgreich.');
         },
         error => {
           this.progressBarService.progressBarState = false;

@@ -1,9 +1,8 @@
-import { ContactPersonDto } from 'src/app/models/contact-person';
-import { element } from 'protractor';
 import { DiaryEntryDto } from 'src/app/models/diary-entry';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SubSink } from 'subsink';
+import { KeyValue } from '@angular/common';
 
 @Component({
   selector: 'app-diary',
@@ -28,11 +27,7 @@ export class DiaryComponent implements OnInit, OnDestroy {
     this.subs.unsubscribe();
   }
 
-  toStringSymptoms(entry: DiaryEntryDto): string {
-    return entry.symptoms.map(s => s.name).join(', ');
-  }
-
-  toStringContactPersons(entry: DiaryEntryDto): string {
-    return entry.contactPersonList.map(s => `${s.firstname} ${s.surename}`).join(', ');
+  originalOrder = (a: KeyValue<string, DiaryEntryDto[]>, b: KeyValue<string, DiaryEntryDto[]>): number => {
+    return 0;
   }
 }
