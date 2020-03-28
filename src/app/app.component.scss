@@ -1,5 +1,15 @@
 @import "../app/styles/variables";
 
+.bootstrap-wrapper,
+.row {
+  height: 100%;
+}
+
+.container-fluid {
+  height: 99%;
+  padding-top: 100px;
+}
+
 .content {
   margin: 25px 20px;
 }
