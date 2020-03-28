@@ -1,24 +1,24 @@
-@import "./src/app/styles/variables";
-@import "./src/app/styles/margin";
-@import "./src/app/styles/padding";
+@import "./src/styles/variables";
+@import "./src/styles/margin";
+@import "./src/styles/padding";
 
 @include angular-material-theme($app-theme);
 
 @font-face {
   font-family: GlacialIndifference;
-  src: url("./assets/glacial-indifference/GlacialIndifference-Regular.otf")
+  src: url("/src/assets/glacial-indifference/GlacialIndifference-Regular.otf")
     format("opentype");
 }
 
 @font-face {
   font-family: GlacialIndifferenceBold;
-  src: url("./assets/glacial-indifference/GlacialIndifference-Bold.otf")
+  src: url("/src/assets/glacial-indifference/GlacialIndifference-Bold.otf")
     format("opentype");
 }
 
 @font-face {
   font-family: OpenSans;
-  src: url("./assets/open-sans/OpenSans-Regular.ttf") format("opentype");
+  src: url("/src/assets/open-sans/OpenSans-Regular.ttf") format("opentype");
 }
 
 html,
