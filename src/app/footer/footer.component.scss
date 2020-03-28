@@ -7,7 +7,7 @@
   height: 56px;
   z-index: 1000;
 
-  @media (max-width: 1340px) {
+  @media (max-width: $break-xxl) {
     display: none;
   }
 }
@@ -25,7 +25,7 @@
 #link {
   text-decoration: none;
 
-  @media display and (max-width: 768px) {
+  @media display and (max-width: $break-md) {
     display: none;
   }
 }
