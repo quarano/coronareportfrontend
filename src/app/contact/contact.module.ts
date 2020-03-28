@@ -1,3 +1,4 @@
+import { AlertModule } from './../ui/alert/alert.module';
 import { RouterModule } from '@angular/router';
 import { ContactPersonResolver } from './../resolvers/contact-person.resolver';
 import { ContactPersonComponent } from './contact-person/contact-person.component';
@@ -15,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ContactRoutingModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    AlertModule
   ],
   declarations: [ContactComponent, ContactPersonComponent],
   providers: [ContactPersonsResolver, ContactPersonResolver]
