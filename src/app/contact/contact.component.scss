@@ -1,11 +1,46 @@
-mat-list-item:hover,
-mat-list-item:active,
-mat-list-item:focus {
-  cursor: pointer;
-  background-color: #f4f4f4;
+@import "../styles/margin";
+@import "../styles/variables";
+
+.contact-card {
+  @extend .mb-3;
+  @extend .mx-auto;
+  max-width: 300px;
+  height: 160px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    cursor: pointer;
+    background-color: #fafafa;
+  }
 }
 
-mat-list-item {
-  padding: 0.7rem !important;
-  min-width: 300px;
+.header-image {
+  background-image: url("../../assets/conatct-person.png");
+  background-size: cover;
+}
+
+::ng-deep {
+  .mat-card-header-text {
+    overflow: hidden !important;
+  }
+}
+
+.email,
+.mat-card-header .mat-card-title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+}
+
+@media screen and (min-width: $break-xl) and (max-width: $break-xxl) {
+  .header-image {
+    display: none;
+  }
+
+  ::ng-deep {
+    .mat-card-header-text {
+      margin-left: 0;
+    }
+  }
 }
