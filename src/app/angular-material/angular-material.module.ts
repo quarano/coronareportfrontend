@@ -1,4 +1,3 @@
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { MatTreeModule } from '@angular/material/tree';
 import {
@@ -51,7 +50,6 @@ const materialModules = [
   MatIconModule,
   MatGridListModule,
   MatListModule,
-  FlexLayoutModule,
   MatSortModule,
   MatTooltipModule
 ];

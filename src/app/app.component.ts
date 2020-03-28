@@ -3,7 +3,7 @@ import { ProgressBarService } from './services/progress-bar.service';
 import { UserService } from './services/user.service';
 import { TenantService } from './services/tenant.service';
 import { TenantsEnum } from './services/tenantsEnum';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -22,5 +22,9 @@ export class AppComponent {
     private progressBarService: ProgressBarService,
     public router: Router,
     private tenantService: TenantService) {
+  }
+
+  get isTenantAdminRoute(): boolean {
+    return this.router.url.startsWith('/tenant-admin');
   }
 }
