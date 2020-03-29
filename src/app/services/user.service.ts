@@ -43,7 +43,7 @@ export class UserService {
     private router: Router) {
     // On starting app, check if local code exists and if it is valid
     const clientCode = this.localClientCode;
-    if (clientCode !== null) {
+    if (clientCode !== undefined) {
       this.checkCodeGetClient(clientCode).subscribe(
         () => this.router.navigate(['/diary'])
       );
@@ -57,6 +57,9 @@ export class UserService {
   }
 
   private checkCodeGetClient(code: string, withErrorNavigation = true): Observable<BackendClient> {
+    if (code === undefined) {
+      return throwError('No code present!');
+    }
     return this.apiService.getClientByCode(code)
       .pipe(
         catchError(error => {
