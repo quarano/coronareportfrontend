@@ -7,8 +7,8 @@
   <mat-card-content *ngIf="counter <= 9 && (currentQuestion$$ | async) as currentQuestion">
     <h2>{{currentQuestion.question}}</h2>
     <mat-radio-group [(ngModel)]="currentBoolAnswer" class="radio-button__group--vertical" *ngIf="currentQuestion.answerType == 'bool'">
-      <mat-radio-button value="1">Ja</mat-radio-button>
-      <mat-radio-button value="0">Nein</mat-radio-button>
+      <mat-radio-button id="bool-answer-yes" value="1">Ja</mat-radio-button>
+      <mat-radio-button id="bool-answer-no" value="0">Nein</mat-radio-button>
     </mat-radio-group>
 
     <mat-form-field class="w-100" *ngIf="currentQuestion.answerType == 'text'" class="form__input--full-width">
@@ -22,10 +22,10 @@
   </mat-card-content>
 
   <mat-card-actions *ngIf="counter <= 9">
-    <button class="w-100" mat-button mat-raised-button color="primary" (click)="continue()" [disabled]="disableButton()">Weiter</button>
+    <button id="next-question-btn" class="w-100" mat-button mat-raised-button color="primary" (click)="continue()" [disabled]="disableButton()">Weiter</button>
   </mat-card-actions>
 
   <mat-card-actions *ngIf="counter > 9">
-    <button class="w-100" mat-button mat-raised-button color="primary" (click)="sendFirstQuery()">Weiter</button>
+    <button id="first-report-finish-btn" class="w-100" mat-button mat-raised-button color="primary" (click)="sendFirstQuery()">Weiter</button>
   </mat-card-actions>
 </mat-card>

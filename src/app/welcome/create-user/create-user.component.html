@@ -5,7 +5,7 @@
       speichern zu können.</p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button mat-raised-button color="primary" (click)="stepperStarted.next(true)">Weiter</button>
+    <button id="next-btn" mat-button mat-raised-button color="primary" (click)="stepperStarted.next(true)">Weiter</button>
   </mat-card-actions>
 </mat-card>
 <app-create-user-details *ngIf="(stepperStarted | async) && !(client$$ | async)" (client)="client$$.next($event)"></app-create-user-details>
@@ -18,7 +18,7 @@
     <p>Möchten Sie die Registrierung abschließen?</p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button mat-raised-button color="primary" (click)="registerClient()">Registrierung abschließen</button>
+    <button id="finish-reg-btn" mat-button mat-raised-button color="primary" (click)="registerClient()">Registrierung abschließen</button>
   </mat-card-actions>
 </mat-card>
 
