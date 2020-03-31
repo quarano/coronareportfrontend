@@ -43,6 +43,7 @@ export class CreateUserComponent implements OnInit {
     this.userService.createClient(this.client$$.getValue(), this.firstQuery$$.getValue())
       .pipe(
         switchMap((code: string) => {
+          console.log(code);
           clientCode = code;
           return this.userService.setUserCode(code);
         }),
@@ -55,6 +56,7 @@ export class CreateUserComponent implements OnInit {
           this.snackbarService.success('Die Registrierung war erfolgreich.');
         },
         error => {
+          console.log(error);
           this.progressBarService.progressBarState = false;
           this.snackbarService.error('Es ist ein Fehler aufgetreten. Bitte später erneut versuchen.');
         }
