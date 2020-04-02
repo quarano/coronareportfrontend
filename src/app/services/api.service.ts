@@ -11,6 +11,7 @@ import { FirstQuery } from '../models/first-query';
 import { ContactPersonDto } from '../models/contact-person';
 import { TenantClient } from '../models/tenant-client';
 import { Tenant } from '../models/tenant';
+import {Client} from '../models/client';
 
 @Injectable({
   providedIn: 'root'
@@ -75,16 +76,20 @@ export class ApiService {
     return this.httpClient.put(`${this.baseUrl}/diaryentries/${diaryEntry.id}`, diaryEntry);
   }
 
-  registerClient(client: BackendClient): Observable<string> {
+  registerClient(client: Client): Observable<string> {
     return this.httpClient.post(`${this.baseUrl}/client/register`, client, { responseType: 'text' });
   }
 
-  getClientByCode(code: string): Observable<BackendClient> {
+  getClientByCode(code: string): Observable<Client> {
     return this.httpClient.get<BackendClient>(`${this.baseUrl}/client/${code}`);
   }
 
   createFirstReport(firstReport: FirstQuery, clientCode: string): Observable<any> {
     return this.httpClient.post(`${this.baseUrl}/firstreport/${clientCode}`, firstReport);
+  }
+
+  getFirstReport(clientCode: string): Observable<FirstQuery> {
+    return this.httpClient.get<FirstQuery>(`${this.baseUrl}/firstreport/${clientCode}`);
   }
 
   createContactPerson(contactPerson: ContactPersonDto): Observable<ContactPersonDto> {
