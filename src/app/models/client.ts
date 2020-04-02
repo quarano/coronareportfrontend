@@ -1,4 +1,5 @@
 export interface Client {
+  clientCode?: string;
   clientId: string;
   surename: string;
   firstname: string;

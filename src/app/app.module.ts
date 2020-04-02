@@ -1,3 +1,4 @@
+import { HeaderComponent } from './layout/header/header.component';
 import { SnackbarService } from './services/snackbar.service';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,6 +15,7 @@ import localeDe from '@angular/common/locales/de';
 import { WelcomeModule } from './welcome/welcome.module';
 import { ContactModule } from './contact/contact.module';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
+import { FooterComponent } from './layout/footer/footer.component';
 
 registerLocaleData(localeDe, 'de');
 
@@ -21,6 +23,8 @@ registerLocaleData(localeDe, 'de');
   declarations: [
     AppComponent,
     NotFoundComponent,
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

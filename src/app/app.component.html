@@ -1,83 +1,41 @@
-<mat-toolbar color="primary" id="header">
-  <img
-    id="logo"
-    src="../assets/epitrack_transparent_logo.png"
-    [routerLink]="['/']"
-  />
-  <h6 style="margin-left: 1rem;">epitrack</h6>
-  <nav *ngIf="isAuthenticated$$ | async">
-    <a routerLink="/diary" routerLinkActive="active">Tagebuch</a>
-    <a routerLink="/contacts" routerLinkActive="active">Kontakte</a>
-  </nav>
-  <div style="flex: 1 1 auto"></div>
-  <div class="tenant-wrapper">
-    <ng-container [ngSwitch]="urlTenant">
-      <h6 *ngSwitchCase="tenantsEnum.develop">Develop</h6>
-      <h6 *ngSwitchCase="tenantsEnum.testhausen">
-        In Kooperation mit Gesundheitsamt Testhausen
-      </h6>
-      <h6 *ngSwitchCase="tenantsEnum.testberg">
-        Gesundheitsamt Testberg
-      </h6>
+<div class="bootstrap-wrapper">
+  <app-header></app-header>
+
+  <div class="container-fluid">
+    <ng-container *ngIf="isTenantAdminRoute">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!isTenantAdminRoute">
+      <div class="row">
+        <div class="col-md-6 offset-xl-3">
+          <router-outlet></router-outlet>
+        </div>
+        <div class="col-md-6 col-xl-3 align-self-center text-center">
+          <img src="../../assets/postit.png" id="post-it" />
+          <div id="post-it-text-container">
+            <p id="post-it-text-header">
+              Wussten Sie schon?
+            </p>
+            <p id="post-it-text">
+              Durch die Verwendung dieser Plattform helfen Sie mit, wichtige
+              Ressourcen für Notfälle freizuhalten.
+            </p>
+            <a
+              mat-stroked-button
+              href="https://www.youtube.com/watch?v=z__mJRP8O0w&feature=youtu.be"
+              target="_blank"
+              style="float: right;"
+              >Zeig mir mehr</a
+            >
+          </div>
+        </div>
+      </div>
     </ng-container>
   </div>
-</mat-toolbar>
-<mat-progress-bar
-  mode="query"
-  *ngIf="progressBarActive$$ | async"
-></mat-progress-bar>
-<div style="height: 4px" *ngIf="!(progressBarActive$$ | async)"></div>
-<div>
-  <div
-    class="content"
-    fxLayout="row"
-    fxLayout.md="column"
-    fxLayout.sm="column"
-    fxLayout.xs="column"
-    fxLayoutGap="2vh"
-  >
-    <div fxFlex="30" *ngIf="!this.router.url.startsWith('/tenant-admin')"></div>
-    <div class="router-content" fxLayoutAlign="center top" [fxFlex]="!this.router.url.startsWith('/tenante-admin') ? '100' : '40'">
-      <router-outlet></router-outlet>
-    </div>
-    <div fxFlex="30" fxLayoutAlign="center center" *ngIf="this.router.url.startsWith('/welcome') || this.router.url.startsWith('/diary') || this.router.url.startsWith('/contacts')">
-      <img src="../../assets/postit.png" id="post-it" height="400rem"/>
-      <div id="post-it-text">
-        <p style="font-family: 'Indie Flower'; font-size:xx-large;">
-          Wussten Sie schon?
-        </p>
-        <p style="font-family: 'Indie Flower';">
-          Durch die Verwendung dieser Plattform helfen Sie mit, wichtige
-          Ressourcen für Notfälle freizuhalten.
-        </p>
-        <a
-          mat-stroked-button
-          href="https://www.youtube.com/watch?v=z__mJRP8O0w&feature=youtu.be"
-          target="_blank"
-          style="float: right;"
-        >Zeig mir mehr</a
-        >
-      </div>
-    </div>
-  </div>
 </div>
-<mat-toolbar color="accent" id="footer">
-  <div class="footer__hashtag">
-    <a href="https://trendtwitter.com/WirvsVirusHack/" target="_blank" id="link">
-      <h6 style="color: #f4f4f4;">#wirvsvirushack</h6>
-    </a>
-  </div>
-  <div style="flex: 1 1 auto"></div>
-  <nav>
-    <a routerLink="/tenant-admin" routerLinkActive="active">Für Behörden</a>
-  </nav>
-  <div style="flex: 1 1 auto"></div>
-  <div id="footer-wrapper">
-    <a href="https://wirvsvirushackathon.org/" target="_blank">
-      <img src="./../assets/Logo_Projekt_01_weiss.png"/>
-    </a>
-    <a href="https://opensource.org/" target="_blank">
-      <img src="./../assets/open_source.png" style="margin-left: 1rem;"/>
-    </a>
-  </div>
-</mat-toolbar>
+
+<app-footer></app-footer>

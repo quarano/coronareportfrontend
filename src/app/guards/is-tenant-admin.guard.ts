@@ -1,16 +1,16 @@
-import {Injectable} from '@angular/core';
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router, CanLoad, Route, UrlSegment} from '@angular/router';
-import {Observable} from 'rxjs';
-import {UserService} from '../services/user.service';
-import {TenantService} from '../services/tenant.service';
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router, CanLoad, Route, UrlSegment } from '@angular/router';
+import { Observable } from 'rxjs';
+import { TenantService } from '../services/tenant.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IsTenantAdminGuard implements CanActivate, CanLoad {
 
-  constructor(private tenantService: TenantService,
-              private router: Router) {
+  constructor(
+    private tenantService: TenantService,
+    private router: Router) {
   }
 
   canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {

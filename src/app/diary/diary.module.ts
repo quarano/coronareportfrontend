@@ -1,3 +1,5 @@
+import { AlertModule } from './../ui/alert/alert.module';
+import { DiaryListItemComponent } from './diary-list-item/diary-list-item.component';
 import { RouterModule } from '@angular/router';
 import { GroupedDiaryEntriesResolver } from '../resolvers/grouped-diary-entries.resolver';
 import { AngularMaterialModule } from './../angular-material/angular-material.module';
@@ -16,9 +18,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     DiaryRoutingModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    AlertModule
   ],
-  declarations: [DiaryComponent, DiaryEntryComponent],
+  declarations: [DiaryComponent, DiaryEntryComponent, DiaryListItemComponent],
   providers: [DiaryEntryResolver, SymptomsResolver, GroupedDiaryEntriesResolver]
 })
 export class DiaryModule { }

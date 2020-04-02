@@ -1,13 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {Client} from '../../models/client';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {FirstQuery} from '../../models/first-query';
 import {UserService} from '../../services/user.service';
-import {BackendClient} from '../../models/backend-client';
 import {SnackbarService} from '../../services/snackbar.service';
 import {ProgressBarService} from '../../services/progress-bar.service';
-import {switchMap} from 'rxjs/operators';
 import {ApiService} from '../../services/api.service';
 import {Router} from '@angular/router';
 
@@ -37,24 +34,17 @@ export class CreateUserComponent implements OnInit {
   }
 
   public registerClient() {
-    let clientCode: string;
     this.progressBarService.progressBarState = true;
     this.registerStarted = true;
-    this.userService.createClient(this.client$$.getValue(), this.firstQuery$$.getValue())
-      .pipe(
-        switchMap((code: string) => {
-          clientCode = code;
-          return this.userService.setUserCode(code);
-        }),
-        switchMap((backendClient: BackendClient) => this.apiService.createFirstReport(this.firstQuery$$.getValue(), clientCode))
-      )
+    this.userService.createClientWithFirstQuery(this.client$$.getValue(), this.firstQuery$$.getValue())
       .subscribe(
-        () => {
+        (client: Client) => {
           this.progressBarService.progressBarState = false;
-          this.clientCode = clientCode;
-          this.snackbarService.confirm('Die Registrierung war erfolgreich.');
+          this.clientCode = client.clientCode;
+          this.snackbarService.success('Die Registrierung war erfolgreich.');
         },
         error => {
+          console.log(error);
           this.progressBarService.progressBarState = false;
           this.snackbarService.error('Es ist ein Fehler aufgetreten. Bitte später erneut versuchen.');
         }

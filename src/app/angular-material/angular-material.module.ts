@@ -1,4 +1,3 @@
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { MatTreeModule } from '@angular/material/tree';
 import {
@@ -25,7 +24,8 @@ import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from 'ngx-mat-date
 import { NgxMatMomentModule } from 'ngx-mat-moment-adapter';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatListModule } from '@angular/material/list';
-import {MatSortModule} from '@angular/material/sort';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const materialModules = [
   MatButtonModule,
@@ -50,8 +50,8 @@ const materialModules = [
   MatIconModule,
   MatGridListModule,
   MatListModule,
-  FlexLayoutModule,
-  MatSortModule
+  MatSortModule,
+  MatTooltipModule
 ];
 
 @NgModule({
