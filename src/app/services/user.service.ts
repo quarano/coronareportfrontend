@@ -67,7 +67,6 @@ export class UserService {
   }
 
   public createClientWithFirstQuery(client: Client, firstQuery: FirstQuery): Observable<Client> {
-    // return this.apiService.registerClient(this.createBackendClient(client, firstQuery));
     let clientCode: string;
     return this.apiService.registerClient(client)
       .pipe(
