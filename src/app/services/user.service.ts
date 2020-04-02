@@ -36,7 +36,6 @@ export class UserService {
   constructor(
     private apiService: ApiService,
     private router: Router) {
-    // On starting app, check if local code exists and if it is valid
     const clientCode = this.localClientCode;
     if (clientCode !== undefined) {
       this.checkCodeGetClient(clientCode).subscribe(
